@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'Livros',
     'Editoras',
     'Alunos',
+    'cpf_field'
 ]
 
 MIDDLEWARE = [
