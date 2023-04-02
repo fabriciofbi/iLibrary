@@ -37,9 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Livros',
-    'Editoras',
-    'Alunos',
+    'cadastro',
     'cpf_field'
 ]
 
@@ -123,11 +121,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = '/livros/img/'
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     # ... outros diretórios ...
-    os.path.join(BASE_DIR, 'livros', 'img'),
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 # Default primary key field type
