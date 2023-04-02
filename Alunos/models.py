@@ -1,16 +1,18 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 from cpf_field.models import CPFField
+from validate_email import validate_email
 
 # Create your models here.
 class Alunos(models.Model):
     nome = models.CharField(max_length=100, blank=True)
-    cpf = CPFField(error_messages={'invalid': 'CPF inválido'})
+    cpf = CPFField(error_messages={'invalid': 'CPF inválido'}, unique=True)
     endereco = models.CharField(max_length=100, blank=True)
     bairro = models.CharField(max_length=50, blank=True)
     cidade = models.CharField(max_length=50, blank=True)
     estado = models.CharField(max_length=2, blank=True)
     celular = models.CharField(max_length=12, blank=True)
-    email = models.CharField(max_length=100, blank=True)
+    email = models.CharField(max_length=100, blank=True, unique=True)
     sala = models.CharField(max_length=10, blank=True)
     data_cadastro = models.DateTimeField(auto_now_add=True, null=True)
 
@@ -23,3 +25,7 @@ class Alunos(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
+
+    def clean(self):
+        if self.email and not validate_email(self.email):
+            raise ValidationError('Endereço de email inválido.')
