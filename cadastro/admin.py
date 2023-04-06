@@ -12,6 +12,11 @@ class AlunosAdmin(admin.ModelAdmin):
     list_display = ('ra', 'nome', 'email', 'celular', 'cidade')
     list_filter = ['sala']
 
+    class Media:
+        js = (
+            'js/scripts.js',
+        )
+
 admin.site.register(Alunos, AlunosAdmin)
 
 class LivrosAdmin(admin.ModelAdmin):

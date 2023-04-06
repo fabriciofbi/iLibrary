@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 from cpf_field.models import CPFField
 from validate_email import validate_email
 from django.core.validators import MinValueValidator
+from django.forms import Media
 
 # Create your models here.
 class Editoras(models.Model):
@@ -20,6 +21,7 @@ class Alunos(models.Model):
     nome = models.CharField(max_length=100, blank=True)
     ra = models.IntegerField(unique=True)
     cpf = CPFField(error_messages={'invalid': 'CPF inválido'}, unique=True, blank=True, max_length=11)
+    cep = models.CharField(max_length=8, blank=True)
     endereco = models.CharField(max_length=100, blank=True)
     bairro = models.CharField(max_length=50, blank=True)
     cidade = models.CharField(max_length=50, blank=True)

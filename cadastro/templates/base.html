@@ -1,0 +1,19 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Minha página</title>
+    {% block extra_head %}
+    {% endblock %}
+    {% if Alunos.Media.js %}
+        {% for js in Alunos.Media.js %}
+            <script src="{% static js %}"></script>
+        {% endfor %}
+    {% endif %}
+</head>
+<body>
+    ...
+</body>
+</html>
