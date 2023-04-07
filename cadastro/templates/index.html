@@ -1,66 +1,20 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <title>iLibrary - Gestão de Bibliotecas</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="iLibrary - Software para controle de Locações em Bibliotecas">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap4/bootstrap.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/main_styles.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
-</head>
-<body>
-    <div class="super_container">
-        <header class="header">
-            <div class="top_bar">
-                <div class="header_container">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <div class="header_content d-flex flex-row align-items-center justify-content-start">
-                                    <div class="logo_container mr-auto">
-                                        <a href="{% url 'index' %}">
-                                            <div class="logo_text">iLibrary</div>
-                                        </a>
-                                    </div>
-                                    <nav class="main_nav_contaner">
-                                        <ul class="main_nav">
-                                            <li class="active"><a href="{% url 'index' %}">Home</a></li>
-                                            <li><a href="#">Autores</a></li>
-                                            <li><a href="#">Categorias</a></li>
-                                            <li><a href="#">Editoras</a></li>
-                                            <li><a href="#">Livros</a></li>
-                                            <li><a href="#">Contato</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-    </div>
+{% extends 'base.html' %}
 
-    <div class="home">
+{% block 'titulo' %} iLibrary - Gestão de Bibliotecas {% endblock %}
+
+{% block 'conteudo' %}  
         <div class="courses">
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <h3 class="section_title text-center">Livros em Destaque</h3>
+                        <h3 class="section_title text-center">Livros Disponíveis</h3>
                     </div>
                 </div>
                 <div class="row courses_row">
                     <div class="col-lg-2 course_col">
                             <div class="course">
                                 <div class="course_image">
-                                    <img src="{% static 'img/livros/cristianismo_puro_e_simples.jpg' %}" alt="Livro">
+                                    <img src="/static/img/livros/cristianismo_puro_e_simples.jpg" alt="Livro">
                                 </div>
                                 <div class="course_body">
                                     <div class="course_title">
@@ -79,7 +33,7 @@
                         <div class="col-lg-2 course_col">
                             <div class="course">
                                 <div class="course_image">
-                                    <img src="{% static 'img/livros/Igreja_Centrada.jpg' %}" alt="Livro">
+                                    <img src="/static/img/livros/igreja_centrada.jpg" alt="Livro">
                                 </div>
                                 <div class="course_body">
                                     <div class="course_title">
@@ -98,7 +52,7 @@
                         <div class="col-lg-2 course_col">
                             <div class="course">
                                 <div class="course_image">
-                                    <img src="{% static 'img/livros/A_culpa_e_das_estrelas.jpg' %}" alt="Livro">
+                                    <img src="/static/img/livros/A_culpa_e_das_estrelas.jpg" alt="Livro">
                                 </div>
                                 <div class="course_body">
                                     <div class="course_title">
@@ -117,7 +71,7 @@
                         <div class="col-lg-2 course_col">
                             <div class="course">
                                 <div class="course_image">
-                                    <img src="{% static 'img/livros/1984.jpg' %}" alt="Livro">
+                                    <img src="/static/img/livros/1984.jpg" alt="Livro">
                                 </div>
                                 <div class="course_body">
                                     <div class="course_title">
@@ -136,7 +90,7 @@
                         <div class="col-lg-2 course_col">
                             <div class="course">
                                 <div class="course_image">
-                                    <img src="{% static 'img/livros/Cristo_em_Voce.jpg' %}" alt="Livro">
+                                    <img src="/static/img/livros/Cristo_em_Voce.jpg" alt="Livro">
                                 </div>
                                 <div class="course_body">
                                     <div class="course_title">
@@ -155,7 +109,7 @@
                         <div class="col-lg-2 course_col">
                             <div class="course">
                                 <div class="course_image">
-                                    <img src="{% static 'img/livros/E_assim_que_acaba.jpg' %}" alt="Livro">
+                                    <img src="/static/img/livros/E_assim_que_acaba.jpg" alt="Livro">
                                 </div>
                                 <div class="course_body">
                                     <div class="course_title">
@@ -174,30 +128,4 @@
                     </div>
                 </div>
             </div>
-
-        <footer class="footer">
-            <div class="copyright">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="text-center mt-3 mb-3">
-                                <div class="cr">
-                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> Trabalho do Projeto Integrador - Univesp
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="js/bootstrap4/popper.js"></script>
-<script src="js/bootstrap4/bootstrap.min.js"></script>
-<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-<script src="plugins/easing/easing.js"></script>
-<script src="js/custom.js"></script>
-
-</body>
-</html>
+{% endblock %}
