@@ -1,22 +1,15 @@
+from os import path
+
 from django.db import models
 from django.core.exceptions import ValidationError
 from cpf_field.models import CPFField
+from django.http import HttpResponse
+from django.utils.html import format_html
 from validate_email import validate_email
 from django.core.validators import MinValueValidator
 from PIL import Image
 
 # Create your models here.
-class Editoras(models.Model):
-    nome = models.CharField(max_length=100)
-    cidade = models.CharField(max_length=50)
-    data_cadastro = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        verbose_name = 'Editora'
-
-    def __str__(self):
-        return self.nome
-
 class Alunos(models.Model):
     nome = models.CharField(max_length=100, blank=True)
     ra = models.IntegerField(unique=True)
@@ -62,6 +55,17 @@ class Categorias(models.Model):
     def __str__(self):
         return self.nome
 
+class Editoras(models.Model):
+    nome = models.CharField(max_length=100)
+    cidade = models.CharField(max_length=50)
+    data_cadastro = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Editora'
+
+    def __str__(self):
+        return self.nome
+
 class Livros(models.Model):
     isbn = models.CharField(max_length=16, unique=True)
     titulo = models.CharField(max_length=100)
@@ -71,8 +75,9 @@ class Livros(models.Model):
     autor = models.ForeignKey(Autores, on_delete=models.CASCADE)
     editora = models.ForeignKey(Editoras, on_delete=models.CASCADE)
     categoria = models.ForeignKey(Categorias, on_delete=models.CASCADE)
-    imagem = models.ImageField(upload_to='static/img/livros/', blank=True)
+    imagem = models.CharField(max_length=255, blank=True)
     data_cadastro = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = 'Livro'
+

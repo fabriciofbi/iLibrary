@@ -12,14 +12,14 @@
             <script src="{% static js %}"></script>
         {% endfor %}
     {% endif %}
+</head>
+<body>
 
-    {% if Livros.Media.js %}
-        {% for js in Livros.Media.js %}
+
+    {% if LivrosAdmin.Media.js %}
+        {% for js in LivrosAdmin.Media.js %}
             <script src="{% static js %}"></script>
         {% endfor %}
     {% endif %}
-</head>
-<body>
-    ...
 </body>
 </html>

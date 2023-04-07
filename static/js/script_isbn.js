@@ -1,18 +1,18 @@
-$(document).ready(function() {
-  $('#id_isbn').on('blur', function() {
-    var isbn = $(this).val();
-    $.ajax({
-      url: '/obter_informacoes_livro/',
-      type: 'GET',
-      data: {'isbn': isbn},
-      success: function(data) {
-        $('#id_titulo').val(data.titulo);
-        $('#id_autor').val(data.autor);
-        // Atualize os outros campos com as informações relevantes
-      },
-      error: function(xhr, status, error) {
-        // Lida com erros de requisição, se necessário
-      }
-    });
+jQuery(document).ready(function($) {
+  const $isbnField = $('#id_isbn');
+  const $tituloField = $('#id_titulo');
+
+  $isbnField.on('blur', function() {
+    const isbn = $(this).val();
+    if (isbn.length === 13) {
+      const url = `https://openlibrary.org/isbn/${isbn}.json`;
+      $.ajax({
+        url: url,
+        dataType: 'json',
+        success: function(data) {
+          $tituloField.val(data.title);
+        }
+      });
+    }
   });
 });

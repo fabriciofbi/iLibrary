@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Busca de Livro por ISBN</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h1>Busca de Livro por ISBN</h1>
+<form id="livroForm">
+  <label for="isbn">ISBN:</label>
+  <input type="text" id="isbn" name="isbn" required>
+  <button type="submit">Buscar</button>
+</form>
+<br>
+<label for="titulo">Título:</label>
+<input type="text" id="titulo" name="titulo" readonly>
+
+<br>
+<label for="autor">Autor:</label>
+<input type="text" id="autor" name="autor" readonly>
+
+<br>
+<label for="editora">Editora:</label>
+<input type="text" id="editora" name="editora" readonly>
+
+<br>
+<label for="imagem">Imagem:</label>
+<input type="text" id="imagem" name="imagem" readonly>
+
+<p>
+  <img src="" id="nomedaimagem">
+</p>
+
+<script>
+// Função para fazer a busca pelo ISBN
+function buscarLivro() {
+  const isbn = $('#isbn').val();
+  const apiUrl = `https://openlibrary.org/isbn/${isbn}.json`;
+
+  // Faz a requisição à API do Open Library
+  $.get(apiUrl)
+    .done(function(data) {
+      $('#titulo').val(data.title || '');
+
+      // Obtém o nome do autor a partir do campo "authors"
+      const autorKey = data.authors ? data.authors[0].key : '';
+      const autorApiUrl = `https://openlibrary.org${autorKey}.json`;
+      $.get(autorApiUrl)
+        .done(function(autorData) {
+          const autor = autorData.name || '';
+          $('#autor').val(autor);
+        })
+        .fail(function() {
+          $('#autor').val('Nome do autor não disponível');
+        });
+
+      // Obtém a editora a partir do campo "publishers"
+      const editora = data.publishers ? data.publishers.join(', ') : '';
+      $('#editora').val(editora);
+
+      if (data.covers && data.covers.length > 0) {
+        // Obtém o link da imagem da capa
+        const coverId = data.covers[0];
+        const imageUrl = `https://covers.openlibrary.org/b/id/${coverId}-L.jpg`;
+        $('#imagem').val(imageUrl);
+        $('#nomedaimagem').attr('src', imageUrl);
+      } else {
+        $('#imagem').val('Imagem não disponível');
+      }
+    })
+    .fail(function() {
+      alert('Não foi possível obter informações do livro. Verifique o ISBN digitado.');
+    });
+}
+
+// Ao enviar o formulário, chama a função buscarLivro()
+$('#livroForm').submit(function(event) {
+  event.preventDefault();
+  buscarLivro();
+});
+</script>
+</body>
+</html>
