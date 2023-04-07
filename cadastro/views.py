@@ -7,3 +7,6 @@ def index(request):
 def teste(request):
     return render(request, 'teste.html')
 
+def autores(request):
+    return render(request, 'autores.html')
+
