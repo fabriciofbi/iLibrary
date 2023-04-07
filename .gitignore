@@ -1,0 +1,40 @@
+# Arquivos e diretórios específicos do Django
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+*.pyo
+*.egg-info/
+__pycache__/
+
+# Arquivos e diretórios específicos do Railway
+.railway/
+*.railway/
+
+# Arquivos gerados por IDEs e editores de texto
+*.pydevproject
+*.pydevworkspace
+*.project
+*.pyt
+*.pytproject
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+*.vscode/
+*.idea/
+
+# Arquivos sensíveis, como arquivos de configuração com senhas
+*.env
+*.env.*
+
+# Outros arquivos e diretórios que podem ser ignorados
+*.log
+*.pot
+*.pyc
+*.pyo
+*.egg-info/
+__pycache__/
+
+# Pasta do ambiente virtual do Python
+venv/

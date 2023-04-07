@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 from cpf_field.models import CPFField
 from validate_email import validate_email
 from django.core.validators import MinValueValidator
-from django.forms import Media
+from PIL import Image
 
 # Create your models here.
 class Editoras(models.Model):
@@ -63,6 +63,7 @@ class Categorias(models.Model):
         return self.nome
 
 class Livros(models.Model):
+    isbn = models.CharField(max_length=16, unique=True)
     titulo = models.CharField(max_length=100)
     ano = models.IntegerField(validators=[MinValueValidator(1)])
     edicao = models.IntegerField()
@@ -70,7 +71,6 @@ class Livros(models.Model):
     autor = models.ForeignKey(Autores, on_delete=models.CASCADE)
     editora = models.ForeignKey(Editoras, on_delete=models.CASCADE)
     categoria = models.ForeignKey(Categorias, on_delete=models.CASCADE)
-    isbn = models.CharField(max_length=16, unique=True)
     imagem = models.ImageField(upload_to='static/img/livros/', blank=True)
     data_cadastro = models.DateTimeField(auto_now_add=True)
 

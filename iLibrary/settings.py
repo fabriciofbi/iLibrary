@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-dltc)3(g6860)d@nlf*4rwq_$2n$t!p*8#cacv7i5&6#^odcr$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -75,23 +75,18 @@ WSGI_APPLICATION = 'iLibrary.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-#   DATABASES = {
-#       'default': {
-    #        'ENGINE': 'django.db.backends.mysql',
-    #        'NAME': 'ilibrary',
-    #        'USER': 'root',
-    #        'PASSWORD': 'Univesp2023',
-    #        'HOST': 'localhost',
-    #        'PORT': '3306',
-#    }
-#
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ilibrary',
+        'USER': 'root',
+        'PASSWORD': 'Univesp2023',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
+
+
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 

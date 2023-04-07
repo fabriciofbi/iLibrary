@@ -12,6 +12,12 @@
             <script src="{% static js %}"></script>
         {% endfor %}
     {% endif %}
+
+    {% if Livros.Media.js %}
+        {% for js in Livros.Media.js %}
+            <script src="{% static js %}"></script>
+        {% endfor %}
+    {% endif %}
 </head>
 <body>
     ...

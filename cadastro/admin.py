@@ -14,7 +14,7 @@ class AlunosAdmin(admin.ModelAdmin):
 
     class Media:
         js = (
-            'js/scripts.js',
+            'js/script_cep.js',
         )
 
 admin.site.register(Alunos, AlunosAdmin)
@@ -22,6 +22,11 @@ admin.site.register(Alunos, AlunosAdmin)
 class LivrosAdmin(admin.ModelAdmin):
     list_display = ('titulo', 'ano', 'edicao', 'qtd_disponivel')
     list_filter = ['ano']
+
+    class Media:
+        js = (
+            'js/script_isbn.js',
+        )
 
 admin.site.register(Livros, LivrosAdmin)
 admin.site.register(Categorias)
