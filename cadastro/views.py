@@ -20,4 +20,4 @@ def contato(request):
     return render(request, 'contato.html')
 
 def teste(request):
-    return render(request, 'teste.html')
+    return render(request, 'testandolayout.html')

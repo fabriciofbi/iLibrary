@@ -9,11 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap4/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/main_styles.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.png' %}">
     <title>{% block 'titulo' %} {% endblock %}</title>
     
     {% block extra_head %}
@@ -22,31 +20,31 @@
 </head>
 <body>
     <header class="header">
-        <div class="top_bar">
-            <div class="header_container">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="header_content d-flex flex-row align-items-center justify-content-start">
-                                <div class="logo_container mr-auto">
-                                    <a href="{% url 'index' %}">
-                                        <div class="logo_text">iLibrary</div>
-                                    </a>
-                                </div>
-                                <nav class="main_nav_contaner">
-                                    <ul class="main_nav">
-                                        <li class="active"><a href="{% url 'index' %}">Home</a></li>
-                                        <li><a href="{% url 'autores' %}">Autores</a></li>
-                                        <li><a href="{% url 'categorias' %}">Categorias</a></li>
-                                        <li><a href="{% url 'editoras' %}">Editoras</a></li>
-                                        <li><a href="{% url 'livros' %}">Livros</a></li>
-                                        <li><a href="{% url 'contato' %}">Contato</a></li>
-                                    </ul>
-                                </nav>
+        <div class="top_bar bg-light">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="header_container bg-light">
+                        <div class="header_content d-flex flex-row align-items-center justify-content-start">
+                            <a class="navbar-brand logo_container mr-auto " href="{% url 'index' %}">
+                                <div class="logo_text">iLibrary</div>
+                            </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item active"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'autores' %}">Autores</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'categorias' %}">Categorias</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'editoras' %}">Editoras</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'livros' %}">Livros</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'contato' %}">Contato</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </div>
+                </nav>
             </div>
         </div>
     </header>
