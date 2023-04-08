@@ -1,16 +1,22 @@
 jQuery(document).ready(function($) {
-  const $isbnField = $('#id_isbn');
-  const $tituloField = $('#id_titulo');
+  const $cepField = $('#id_cep');
+  const $enderecoField = $('#id_endereco');
+  const $bairroField = $('#id_bairro');
+  const $cidadeField = $('#id_cidade');
+  const $estadoField = $('#id_estado');
 
-  $isbnField.on('blur', function() {
-    const isbn = $(this).val();
-    if (isbn.length === 13) {
-      const url = `https://openlibrary.org/isbn/${isbn}.json`;
+  $cepField.on('blur', function() {
+    const cep = $(this).val();
+    if (cep.length === 8) {
+      const url = `https://viacep.com.br/ws/${cep}/json/`;
       $.ajax({
         url: url,
         dataType: 'json',
         success: function(data) {
-          $tituloField.val(data.title);
+          $enderecoField.val(data.logradouro);
+          $bairroField.val(data.bairro);
+          $cidadeField.val(data.localidade);
+          $estadoField.val(data.uf);
         }
       });
     }
