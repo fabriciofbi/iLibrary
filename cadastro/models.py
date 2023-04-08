@@ -76,6 +76,7 @@ class Livros(models.Model):
     editora = models.ForeignKey(Editoras, on_delete=models.CASCADE)
     categoria = models.ForeignKey(Categorias, on_delete=models.CASCADE)
     imagem = models.CharField(max_length=255, blank=True)
+    destaque = models.BooleanField(default=False)
     data_cadastro = models.DateTimeField(auto_now_add=True)
 
     class Meta:

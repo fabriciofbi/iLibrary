@@ -76,16 +76,28 @@ WSGI_APPLICATION = 'iLibrary.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'fabricioFBI$default',
+#        'USER': 'fabricioFBI',
+#        'PASSWORD': 'Univesp2023',
+#        'HOST': 'fabricioFBI.mysql.pythonanywhere-services.com',
+#        'PORT': '3306',
+#    }
+#}
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ilibrary',
         'USER': 'root',
-        'PASSWORD': 'Univesp2023',
-        'HOST': 'localhost',
+       'PASSWORD': 'Univesp2023',
+       'HOST': 'localhost',
         'PORT': '3306',
     }
 }
+
 
 
 # Password validation
