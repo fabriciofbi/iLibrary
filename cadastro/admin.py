@@ -1,12 +1,7 @@
 from django.contrib import admin
-from cadastro.models import Editoras, Alunos, Livros, Categorias, Autores
+from django.utils.html import format_html
 
-class EditorasAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'cidade')
-    list_filter = ['cidade']
-
-
-admin.site.register(Editoras, EditorasAdmin)
+from cadastro.models import Alunos, Livros, Categorias
 
 class AlunosAdmin(admin.ModelAdmin):
     list_display = ('ra', 'nome', 'email', 'celular', 'cidade')
@@ -20,7 +15,8 @@ class AlunosAdmin(admin.ModelAdmin):
 admin.site.register(Alunos, AlunosAdmin)
 
 class LivrosAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'ano', 'edicao', 'qtd_disponivel')
+    fields = ['isbn', 'titulo', 'ano', 'edicao', 'qtd_disponivel', 'autor', 'editora', 'categoria', 'destaque', 'imagem', 'descricao']
+    list_display = ('titulo', 'ano', 'edicao', 'qtd_disponivel', 'destaque')
     list_filter = ['ano']
 
     class Media:
@@ -29,5 +25,8 @@ class LivrosAdmin(admin.ModelAdmin):
         )
 
 admin.site.register(Livros, LivrosAdmin)
+
+class CategoriasAdmin(admin.ModelAdmin):
+    list_display = ('nome')
+
 admin.site.register(Categorias)
-admin.site.register(Autores)

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import index, livros, autores, editoras, categorias, contato, teste
+from .views import index, livros, autores, editoras, categorias, contato, teste, favicon_view, busca
 
 urlpatterns = [
     path('', index, name='index'),
@@ -10,4 +10,7 @@ urlpatterns = [
     path('categorias/', categorias, name='categorias'),
     path('contato/', contato, name='contato'),
     path('teste/', teste, name='teste'),
+    path('busca/', busca, name='busca.html'),
+    path('favicon.ico', favicon_view, name='favicon'),
+
 ]

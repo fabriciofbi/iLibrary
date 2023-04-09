@@ -30,8 +30,6 @@
                                     <option value="12">12</option>
                                     <option value="24">24</option>
                                     <option value="48">48</option>
-                                    <option value="96">96</option>
-                                    <option value="120">120</option>
                                 </select>
                             </div>
                         </div>
@@ -39,7 +37,7 @@
                             <div class="shop-select">
                                 <select name="sort" id="sort">
                                     <option value="position">Ordem Padrão</option>
-                                    <option value="p-name">Popularidade</option>
+                                    <option value="p-name">Alfabética</option>
                                     <option value="p-price">Qtde Disponível</option>
                                 </select>
                             </div>
@@ -49,15 +47,16 @@
                 <div class="ht-product-shop tab-content text-center">
                     <div class="tab-pane active show fade" id="grid" role="tabpanel">
                         <div class="row">
+                            {% for livro in livros %}
                             <div class="col-lg-2 col-md-4 col-sm-6">
                                 <div class="single-product-item">
                                     <div class="product-image">
-                                        <a href="product-details.html">
-                                            <img src="static/img/livros/1984.jpg" alt="" class="img-fluid">
+                                        <a href="produto/{{ livro.id }}">
+                                            <img src="{{ livro.imagem.url }}" alt="" class="img-fluid">
                                         </a>
                                         <div class="product-hover">
                                             <ul class="hover-icon-list">
-                                                <li><a href="static/img/livros/1984.jpg" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
+                                                <li><a href="{{ livro.imagem.url }}" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
                                             </ul>
 
                                         </div>
@@ -70,539 +69,46 @@
                                             <i class="fa fa-star-o color"></i>
                                             <i class="fa fa-star-o"></i>
                                         </div>
-                                        <h5><a href="product-details.html">1984</a></h5>
-                                        <h6><a href="product-details.html">George Orwell</a></h6>
-                                        <h6>Disponível: 1</h6>
+                                        <h5><a href="produto/{{ livro.id }}">{{ livro.titulo }}</a></h5>
+                                        <h6><a href="produto/{{ livro.id }}">{{ livro.autor }}</a></h6>
+                                        <h6>Disponível: {{ livro.qtd_disponivel }}</h6>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-2 col-md-4 col-sm-6">
-                                <div class="single-product-item">
-                                    <div class="product-image">
-                                        <a href="product-details.html">
-                                            <img src="static/img/livros/A_culpa_e_das_estrelas.jpg" alt="" class="img-fluid">
-                                        </a>
-                                        <div class="product-hover">
-                                            <ul class="hover-icon-list">
-                                                <li><a href="static/img/livros/A_culpa_e_das_estrelas.jpg" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                                            </ul>
-
-                                        </div>
-                                    </div>
-                                    <div class="product-text">
-                                        <div class="product-rating">
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                        </div>
-                                        <h5><a href="product-details.html">A culpa é das estrelas</a></h5>
-                                        <h6><a href="product-details.html">John Green</a></h6>
-                                        <h6>Disponível: 1</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-4 col-sm-6">
-                                <div class="single-product-item">
-                                    <div class="product-image">
-                                        <a href="product-details.html">
-                                            <img src="static/img/livros/cristianismo_puro_e_simples.jpg" alt="" class="img-fluid">
-                                        </a>
-                                        <div class="product-hover">
-                                            <ul class="hover-icon-list">
-                                                <li><a href="static/img/livros/cristianismo_puro_e_simples.jpg" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                                            </ul>
-
-                                        </div>
-                                    </div>
-                                    <div class="product-text">
-                                        <div class="product-rating">
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <h5><a href="product-details.html">Cristianismo Puro e Simples</a></h5>
-                                        <h6><a href="product-details.html">C. S. Lewis</a></h6>
-                                        <h6>Disponível: 2</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-4 col-sm-6">
-                                <div class="single-product-item">
-                                    <div class="product-image">
-                                        <a href="product-details.html">
-                                            <img src="static/img/livros/cristo_em_voce.jpg" alt="" class="img-fluid">
-                                        </a>
-                                        <div class="product-hover">
-                                            <ul class="hover-icon-list">
-                                                <li><a href="static/img/livros/cristo_em_voce.jpg" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                                            </ul>
-
-                                        </div>
-                                    </div>
-                                    <div class="product-text">
-                                        <div class="product-rating">
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                        </div>
-                                        <h5><a href="product-details.html">Cristo em Você</a></h5>
-                                        <h6><a href="product-details.html">C. H. Spurgeon</a></h6>
-                                        <h6>Disponível: 1</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-4 col-sm-6">
-                                <div class="single-product-item">
-                                    <div class="product-image">
-                                        <a href="product-details.html">
-                                            <img src="static/img/livros/e_assim_que_acaba.jpg" alt="" class="img-fluid">
-                                        </a>
-                                        <div class="product-hover">
-                                            <ul class="hover-icon-list">
-                                                <li><a href="static/img/livros/e_assim_que_acaba.jpg" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                                            </ul>
-
-                                        </div>
-                                    </div>
-                                    <div class="product-text">
-                                        <div class="product-rating">
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <h5><a href="product-details.html">É assim que acaba</a></h5>
-                                        <h6><a href="product-details.html">Colleen Hoover</a></h6>
-                                        <h6>Disponível: 3</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-4 col-sm-6">
-                                <div class="single-product-item">
-                                    <div class="product-image">
-                                        <a href="product-details.html">
-                                            <img src="static/img/livros/igreja_centrada.jpg" alt="" class="img-fluid">
-                                        </a>
-                                        <div class="product-hover">
-                                            <ul class="hover-icon-list">
-                                                <li><a href="static/img/livros/igreja_centrada.jpg" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                                            </ul>
-
-                                        </div>
-                                    </div>
-                                    <div class="product-text">
-                                        <div class="product-rating">
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <h5><a href="product-details.html">Igreja Centrada</a></h5>
-                                        <h6><a href="product-details.html">Timothy Keller</a></h6>
-                                        <h6>Disponível: 1</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-4 col-sm-6">
-                                <div class="single-product-item">
-                                    <div class="product-image">
-                                        <a href="product-details.html">
-                                            <img src="static/img/livros/em_mim_basta.jpg" alt="" class="img-fluid">
-                                        </a>
-                                        <div class="product-hover">
-                                            <ul class="hover-icon-list">
-                                                <li><a href="static/img/livros/em_mim_basta.jpg" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                                            </ul>
-
-                                        </div>
-                                    </div>
-                                    <div class="product-text">
-                                        <div class="product-rating">
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <h5><a href="product-details.html">Em mim basta!</a></h5>
-                                        <h6><a href="product-details.html">William Sanches</a></h6>
-                                        <h6>Disponível: 1</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-4 col-sm-6">
-                                <div class="single-product-item">
-                                    <div class="product-image">
-                                        <a href="product-details.html">
-                                            <img src="static/img/livros/imperfeitos.jpg" alt="" class="img-fluid">
-                                        </a>
-                                        <div class="product-hover">
-                                            <ul class="hover-icon-list">
-                                                <li><a href="static/img/livros/imperfeitos.jpg" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                                            </ul>
-
-                                        </div>
-                                    </div>
-                                    <div class="product-text">
-                                        <div class="product-rating">
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <h5><a href="product-details.html">Imperfeitos</a></h5>
-                                        <h6><a href="product-details.html">Christina Lauren</a></h6>
-                                        <h6>Disponível: 2</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-4 col-sm-6">
-                                <div class="single-product-item">
-                                    <div class="product-image">
-                                        <a href="product-details.html">
-                                            <img src="static/img/livros/nada_fica_no_passado.jpg" alt="" class="img-fluid">
-                                        </a>
-                                        <div class="product-hover">
-                                            <ul class="hover-icon-list">
-                                                <li><a href="static/img/livros/nada_fica_no_passado.jpg" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                                            </ul>
-
-                                        </div>
-                                    </div>
-                                    <div class="product-text">
-                                        <div class="product-rating">
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <h5><a href="product-details.html">Nada fica no passado</a></h5>
-                                        <h6><a href="product-details.html">Jennifer Hillier</a></h6>
-                                        <h6>Disponível: 1</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-4 col-sm-6">
-                                <div class="single-product-item">
-                                    <div class="product-image">
-                                        <a href="product-details.html">
-                                            <img src="static/img/livros/o_monge_e_o_executivo.jpg" alt="" class="img-fluid">
-                                        </a>
-                                        <div class="product-hover">
-                                            <ul class="hover-icon-list">
-                                                <li><a href="static/img/livros/o_monge_e_o_executivo.jpg" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                                            </ul>
-
-                                        </div>
-                                    </div>
-                                    <div class="product-text">
-                                        <div class="product-rating">
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <h5><a href="product-details.html">O monge e o executivo</a></h5>
-                                        <h6><a href="product-details.html">James C. Hunter</a></h6>
-                                        <h6>Disponível: 5</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-4 col-sm-6">
-                                <div class="single-product-item">
-                                    <div class="product-image">
-                                        <a href="product-details.html">
-                                            <img src="static/img/livros/quem_mexeu_no_meu_queijo.jpg" alt="" class="img-fluid">
-                                        </a>
-                                        <div class="product-hover">
-                                            <ul class="hover-icon-list">
-                                                <li><a href="static/img/livros/quem_mexeu_no_meu_queijo.jpg" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                                            </ul>
-
-                                        </div>
-                                    </div>
-                                    <div class="product-text">
-                                        <div class="product-rating">
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <h5><a href="product-details.html">Quem mexeu no meu queijo</a></h5>
-                                        <h6><a href="product-details.html">Spencer Johnson</a></h6>
-                                        <h6>Disponível: 3</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-4 col-sm-6">
-                                <div class="single-product-item">
-                                    <div class="product-image">
-                                        <a href="product-details.html">
-                                            <img src="static/img/livros/sem_reclamar.jpg" alt="" class="img-fluid">
-                                        </a>
-                                        <div class="product-hover">
-                                            <ul class="hover-icon-list">
-                                                <li><a href="static/img/livros/sem_reclamar.jpg" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                                            </ul>
-
-                                        </div>
-                                    </div>
-                                    <div class="product-text">
-                                        <div class="product-rating">
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <h5><a href="product-details.html">Um dia sem reclamar</a></h5>
-                                        <h6><a href="product-details.html">Davi Lago</a></h6>
-                                        <h6>Disponível: 1</h6>
-                                    </div>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
+
                     <div class="tab-pane fade text-start" id="list" role="tabpanel">
-                        <div class="single-product-item">
-                            <div class="product-image">
-                                <a href="product-details.html">
-                                    <img src="static/img/livros/1984.jpg" alt="">
-                                </a>
-                                <div class="product-hover">
-                                    <ul class="hover-icon-list">
-                                        <li><a href="static/img/livros/1984.jpg" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                                    </ul>
+                        {% for livro in livros %}
+                            <div class="single-product-item">
+                                <div class="product-image">
+                                    <a href="produto/{{ livro.id }}">
+                                        <img src="{{ livro.imagem.url }}" alt="">
+                                    </a>
+                                    <div class="product-hover">
+                                        <ul class="hover-icon-list">
+                                            <li><a href="{{ livro.imagem.url }" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="product-text">
+                                    <h5><a href="#">{{ livro.titulo }}</a></h5>
+                                    <h6><a href="#">{{ livro.autor }}</a></h6>
+                                    <div class="product-rating">
+                                        <i class="fa fa-star-o color"></i>
+                                        <i class="fa fa-star-o color"></i>
+                                        <i class="fa fa-star-o color"></i>
+                                        <i class="fa fa-star-o color"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                    <div class="pro-price">
+                                        <span class="new-price">Disponível: {{ livro.qtd_disponivel }}</span>
+                                    </div>
+                                    <p>{{ livro.descricao }}</p>
                                 </div>
                             </div>
-                            <div class="product-text">
-                                <h5><a href="#">1984</a></h5>
-                                <h6><a href="#">George Orwell</a></h6>
-                                <div class="product-rating">
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <div class="pro-price">
-                                    <span class="new-price">Disponível: 1</span>
-                                </div>
-                                <p>1984 é um dos mais importantes romances de ficção científica do século XX. Publicada originalmente em 1949, poucos meses antes da morte do autor, George Orwell, essa sátira política ambientada em uma distopia futurista influencia a literatura até hoje.<br />
-                                Nesta obra magistral, acompanhamos o drama de Winston Smith, um funcionário do Ministério da Verdade, parte do governo do superestado da Oceania ― que inclui as Américas, a Austrália, a Inglaterra e o sul da África.<br />
-                                O estado totalitário comandado pela figura mítica do Grande Irmão controla todos os aspectos da vida de seus cidadãos. No entanto, Smith odeia secretamente o Partido e deseja se rebelar contra o sistema.</p>
-                            </div>
-                        </div>
-                         <div class="single-product-item">
-                            <div class="product-image">
-                                <a href="product-details.html">
-                                    <img src="static/img/livros/a_culpa_e_das_estrelas.jpg" alt="">
-                                </a>
-                                <div class="product-hover">
-                                    <ul class="hover-icon-list">
-                                        <li><a href="static/img/livros/a_culpa_e_das_estrelas.jpg" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product-text">
-                                <h5><a href="#">A culpa é das estrelas</a></h5>
-                                <h6><a href="#">John Green</a></h6>
-                                <div class="product-rating">
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <div class="pro-price">
-                                    <span class="new-price">Disponível: 1</span>
-                                </div>
-                                <p>Hazel é uma paciente terminal. Ainda que, por um milagre da medicina, seu tumor tenha encolhido bastante ― o que lhe dá a promessa de viver mais alguns anos ―, o último capítulo de sua história foi escrito no momento do diagnóstico.<br />
-                                Mas em todo bom enredo há uma reviravolta, e a de Hazel se chama Augustus Waters, um garoto bonito que certo dia aparece no Grupo de Apoio a Crianças com Câncer. Juntos, os dois vão preencher o pequeno infinito das páginas em branco de suas vidas.<br />
-                                Inspirador, corajoso, irreverente e brutal, A culpa é das estrelas é a obra mais ambiciosa e emocionante de John Green, sobre a alegria e a tragédia que é viver e amar.</p>
-                            </div>
-                        </div>
-                         <div class="single-product-item">
-                            <div class="product-image">
-                                <a href="product-details.html">
-                                    <img src="static/img/livros/cristianismo_puro_e_simples.jpg" alt="">
-                                </a>
-                                <div class="product-hover">
-                                    <ul class="hover-icon-list">
-                                        <li><a href="static/img/livros/cristianismo_puro_e_simples.jpg" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product-text">
-                                <h5><a href="#">Cristianismo Puro e Simples</a></h5>
-                                <h6><a href="#">C. S. Lewis</a></h6>
-                                <div class="product-rating">
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <div class="pro-price">
-                                    <span class="new-price">Disponível: 2</span>
-                                </div>
-                                <p>Em um dos períodos mais sombrios da humanidade, a Segunda Guerra Mundial, C.S. Lewis foi convidado pela BBC a fazer uma série de palestras pelo rádio com o intuito de explicar bases da fé cristã de forma simples e clara. Mais tarde, ajustado pelo próprio Lewis, esse material daria origem a Cristianismo puro e simples, um grande clássico da literatura cristã.<br />
-                                Na obra mais popular e acessível de seu legado, Lewis apresenta os principais elementos da cosmovisão cristã e seus princípios básicos, gradativamente conduzindo o leitor a temas mais profundos e complexos, provocando reflexão e debate. Nesta edição especial da coleção C.S. Lewis, com capa dura e tradução de uma das maiores especialistas em Lewis do Brasil, você vai encontrar as palavras que encorajaram e fortaleceram milhares de ouvintes em tempos de guerra ― e ainda reverberam mais de 70 anos depois.</p>
-                            </div>
-                        </div>
-                         <div class="single-product-item">
-                            <div class="product-image">
-                                <a href="product-details.html">
-                                    <img src="static/img/livros/em_mim_basta.jpg" alt="">
-                                </a>
-                                <div class="product-hover">
-                                    <ul class="hover-icon-list">
-                                        <li><a href="static/img/livros/em_mim_basta.jpg" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product-text">
-                                <h5><a href="#">Em mim basta</a></h5>
-                                <h6><a href="#">William Sanches</a></h6>
-                                <div class="product-rating">
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <div class="pro-price">
-                                    <span class="new-price">Disponível: 1</span>
-                                </div>
-                                <p>Em mim basta! será seu novo livro de cabeceira e de todo aquele que quer dar um novo rumo à sua vida! EM MIM BASTA! é o livro mais sutil e intenso sobre crenças limitantes e padrões que você já leu. Ele lhe garante o direito de viver na prosperidade em todas as áreas de sua vida. Aborda, de maneira prática, as situações, crenças e atitudes que nos amarram no mesmo lugar, cada vez que estamos prestes a dar um novo passo. Tudo é apenas possibilidade até que se torne consciente. Este livro vai lhe tornar consciente de muitas coisas. Um grande movimento vai acontecer em você. Não sinta vergonha se em algum momento sentir vontade de gritar “EM MIM BASTA!”. Isso tem poder curativo. É terapêutico, limpa, ressignifica, revigora, reinstala. Seja o fósforo que teve a coragem de se retirar. Sabe quando a mãe, como resposta ao filho teimoso que argumenta “mas todo mundo foi”, diz “você não é todo mundo”? Ela tem razão! Você não é todo mundo! Pare de ser! Em mim basta! será seu novo livro de cabeceira e de todo aquele que quer dar um novo rumo à sua vida!</p>
-                            </div>
-                        </div>
-                         <div class="single-product-item">
-                            <div class="product-image">
-                                <a href="product-details.html">
-                                    <img src="static/img/livros/igreja_centrada.jpg" alt="">
-                                </a>
-                                <div class="product-hover">
-                                    <ul class="hover-icon-list">
-                                        <li><a href="static/img/livros/igreja_centrada.jpg" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product-text">
-                                <h5><a href="#">Igreja Centrada</a></h5>
-                                <h6><a href="#">Timothy Keller</a></h6>
-                                <div class="product-rating">
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o color"></i>
-                                </div>
-                                <div class="pro-price">
-                                    <span class="new-price">Disponível: 1</span>
-                                </div>
-                                <p>Em Igreja centrada, Timothy Keller — com mais de vinte anos de experiência ministerial em Nova York - oferece percepções desafiadoras e levanta questões provocativas. Por meio da aplicação de doutrinas clássicas ao nosso tempo e contexto, Keller descreve de forma concisa e direta uma visão teológica para o ministério, organizada em torno de três compromissos fundamentais: Centralidade do Evangelho. O evangelho da graça de Jesus Cristo muda todas as coisas, desde o coração do homem até o mundo inteiro, o que inclui também nossa comunidade. Ele transforma completamente o conteúdo, o tom e a estratégia de tudo o que fazemos. Centralidade da Cidade. Cada vez mais, os grandes centros urbanos influenciam nossa cultura global e impactam nossa forma de executar o ministério. Adotando uma maneira positiva de enxergar a cultura, aprendemos a afirmar que, para o ministério que brota do evangelho, as cidades são lugares maravilhosos e estratégicos e ainda com grandes oportunidades de serviço. Centralidade do Movimento. Em vez de criar nossa própria tribo, buscamos, guiados pelo Espírito Santo, a prosperidade e a paz da nossa comunidade.</p>
-                            </div>
-                        </div>
-                         <div class="single-product-item">
-                            <div class="product-image">
-                                <a href="product-details.html">
-                                    <img src="static/img/livros/imperfeitos.jpg" alt="">
-                                </a>
-                                <div class="product-hover">
-                                    <ul class="hover-icon-list">
-                                        <li><a href="static/img/livros/imperfeitos.jpg" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product-text">
-                                <h5><a href="#">Imperfeitos</a></h5>
-                                <h6><a href="#">Christina Lauren</a></h6>
-                                <div class="product-rating">
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <div class="pro-price">
-                                    <span class="new-price">Disponível: 2</span>
-                                </div>
-                                <p>Olive se sente como a gêmea azarada da casa: dos acidentes estranhamente inexplicáveis ao fracasso na vida profissional e amorosa ― nada dá certo para ela. Porém, parece que o jogo vira quando sua alergia a frutos do mar a protege de um desastre, já que todos os convidados da festa de casamento da irmã sofrem com intoxicação alimentar. Na verdade... nem todos. Ethan, o irmão do noivo, também ficou de fora desse pesadelo. Então, a irmã de Olive, sempre muito prática, propõe a eles que aproveitem a viagem de lua-de-mel, que não é reembolsável, para uma ilha do Havaí. Mas há um “pequeno” problema: Olive e Ethan são inimigos mortais. Há um passado entre eles que tornou a convivência impossível. Mas quem vai dizer não para essa viagem? Ainda mais de graça? Nem pensar! A ideia de ambos era ficar bem longe um do outro, mas a situação muda quando uma mentirinha boba vai crescendo e não podem voltar atrás. E dividindo a mesma suíte, entre farpas e sarcasmos, já se pode desconfiar.... onde tem raiva tem fogo? Com diálogos inteligentes e divertidos, dois personagens cativantes, e cenários de tirar o fôlego, Imperfeitos é o livro ideal para rir sem parar e ainda ver uma história de amor nascer no lugar mais improvável.</p>
-                            </div>
-                        </div>
-                         <div class="single-product-item">
-                            <div class="product-image">
-                                <a href="product-details.html">
-                                    <img src="static/img/livros/o_monge_e_o_executivo.jpg" alt="">
-                                </a>
-                                <div class="product-hover">
-                                    <ul class="hover-icon-list">
-                                        <li><a href="static/img/livros/o_monge_e_o_executivo.jpg" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product-text">
-                                <h5><a href="#">O monge e o executivo</a></h5>
-                                <h6><a href="#">James C. Hunter</a></h6>
-                                <div class="product-rating">
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <div class="pro-price">
-                                    <span class="new-price">Disponível: 5</span>
-                                </div>
-                                <p>"Um livro fascinante que você não vai conseguir largar. O Monge e o Executivo contém tesouros que irão transformar a sua vida." – Joe Weller, ex-presidente da Nestlé americana</br>
-                                Você está convidado a juntar-se a um grupo que durante uma semana vai estudar com um dos maiores especialistas em liderança dos Estados Unidos.</br>
-                                Leonard Hoffman, um famoso empresário que abandonou sua brilhante carreira para se tornar monge em um mosteiro beneditino, é o personagem central desta envolvente história criada por James C. Hunter para ensinar de forma clara e agradável os princípios fundamentais dos verdadeiros líderes.</br>
-                                Se você tem dificuldade em fazer com que sua equipe dê o melhor de si no trabalho e gostaria de se relacionar melhor com sua família e seus amigos, vai encontrar neste livro personagens, ideias e discussões que vão abrir um novo horizonte em sua forma de lidar com os outros.</br>
-                                É impossível ler esse livro sem sair transformado. O monge e o executivo é, sobretudo, uma lição sobre como se tornar uma pessoa melhor.</p>
-                            </div>
-                        </div>
-                         <div class="single-product-item">
-                            <div class="product-image">
-                                <a href="product-details.html">
-                                    <img src="static/img/livros/sem_reclamar.jpg" alt="">
-                                </a>
-                                <div class="product-hover">
-                                    <ul class="hover-icon-list">
-                                        <li><a href="static/img/livros/sem_reclamar.jpg" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product-text">
-                                <h5><a href="#">Um dia sem reclamar</a></h5>
-                                <h6><a href="#">Davi Lago</a></h6>
-                                <div class="product-rating">
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o color"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <div class="pro-price">
-                                    <span class="new-price">Disponível: 1</span>
-                                </div>
-                                <p>Quantas vezes você reclamou de algo hoje? Já parou pra pensar como é difícil ser grato e como focamos muito mais a nossa atenção nos problemas e não nas soluções?<br />
-                                Este livro lhe propõe o seguinte desafio: passe um dia (24 horas) sem reclamar. Para realizá-lo, você precisará registrar o horário em que iniciará o exercício. E não será preciso registrar quantas vezes você viola seu comando porque, a cada vez que você o fizer, deverá reiniciar a contagem do tempo.<br />
-                                Segundo os autores, a principal função deste exercício é tornar-nos conscientes de que a ingratidão é o padrão natural do ser humano. Além dele, você encontrará aqui mais seis exercícios de gratidão e mudará para sempre a maneira como encara os seus problemas.</p>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="pagination-wrapper">

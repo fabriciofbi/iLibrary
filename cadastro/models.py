@@ -37,31 +37,11 @@ class Alunos(models.Model):
         if self.email and not validate_email(self.email):
             raise ValidationError('Endereço de email inválido.')
 
-class Autores(models.Model):
-    nome = models.CharField(max_length=50)
-
-    class Meta:
-        verbose_name_plural = 'Autores'
-
-    def __str__(self):
-        return self.nome
-
 class Categorias(models.Model):
     nome = models.CharField(max_length=50)
 
     class Meta:
         verbose_name_plural = 'Categorias'
-
-    def __str__(self):
-        return self.nome
-
-class Editoras(models.Model):
-    nome = models.CharField(max_length=100)
-    cidade = models.CharField(max_length=50)
-    data_cadastro = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        verbose_name = 'Editora'
 
     def __str__(self):
         return self.nome
@@ -72,13 +52,16 @@ class Livros(models.Model):
     ano = models.IntegerField(validators=[MinValueValidator(1)])
     edicao = models.IntegerField()
     qtd_disponivel = models.IntegerField()
-    autor = models.ForeignKey(Autores, on_delete=models.CASCADE)
-    editora = models.ForeignKey(Editoras, on_delete=models.CASCADE)
+    autor = models.CharField(max_length=100)
+    editora = models.CharField(max_length=50)
     categoria = models.ForeignKey(Categorias, on_delete=models.CASCADE)
-    imagem = models.CharField(max_length=255, blank=True)
+    imagem = models.ImageField(upload_to='static/img/livros/')
     destaque = models.BooleanField(default=False)
     data_cadastro = models.DateTimeField(auto_now_add=True)
+    descricao = models.TextField()
 
     class Meta:
         verbose_name = 'Livro'
 
+    def __str__(self):
+        return self.titulo
