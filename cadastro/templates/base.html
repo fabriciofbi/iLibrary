@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="{% static 'css/plugins.css' %}">
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="stylesheet" href="{% static 'js/vendor/modernizr-3.5.0.min.js' %}">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 
         {% block extra_head %}
         {% endblock %}
@@ -51,7 +52,7 @@
                         <div class="header-content d-flex justify-content-end">
                             <div class="search-wrapper">
                                 <a href="#"><span class="icon icon-Search"></span></a>
-                                <form action="busca/" method="GET" class="search-form">
+                                <form action="/busca/" method="GET" class="search-form">
                                     <input type="text" name="busca" minlength="5" placeholder="Pesquisar por Livro, Autor, Editora">
                                     <button type="submit">Pesquisar</button>
                                 </form>
@@ -100,11 +101,6 @@
                         <div class="col-sm-12">
                             <div class="footer-text-bottom text-center">
                                 <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> <a href="#">iLibrary - Projeto Integrador da Faculdade Univesp/SP</a>. Todos os direitos Reservados</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="payment-img d-flex justify-content-end">
-                                <img src="assets/img/payment.png" alt="">
                             </div>
                         </div>
                     </div>

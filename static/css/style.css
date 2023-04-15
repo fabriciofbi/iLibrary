@@ -51,7 +51,7 @@ html, body {
 
 body {
   line-height: 24px;
-  font-size: 12px;
+  font-size: 14px;
   font-style: normal;
   font-weight: normal;
   visibility: visible;
@@ -1336,69 +1336,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   background-color: #ffffff;
 }
 
-/*-- Background Image --*/
-.bg-1, .bg-2, .bg-3, .bg-4, .bg-5, .bg-7, .bg-13 {
-  background-attachment: scroll;
-  background-clip: initial;
-  background-color: rgba(0, 0, 0, 0);
-  background-origin: initial;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-}
-
-.bg-1 {
-  background-image: url("../img/bg/1.jpg");
-  background-position: top center;
-}
-
-.bg-2 {
-  background-image: url("../img/bg/2.png");
-}
-
-.bg-3 {
-  background-image: url("../img/bg/3.jpg");
-}
-
-.bg-4 {
-  background-image: url("../img/bg/4.jpg");
-  background-position: top center;
-}
-
-.bg-5 {
-  background: rgba(0, 0, 0, 0) url("../img/bg/5.jpg") no-repeat scroll center -6px;
-}
-
-.bg-7 {
-  background-image: url("../img/bg/7.png");
-}
-
-.bg-8 {
-  background: #f6f5f1 url(../img/bg/8.jpg) top center no-repeat;
-}
-
-.bg-9 {
-  background: #f6f5f1 url(../img/bg/9.jpg) top center no-repeat;
-}
-
-.bg-10 {
-  background: #f6f5f1 url(../img/bg/10.jpg) center center no-repeat;
-}
-
-.bg-11 {
-  background: #f6f5f1 url(../img/bg/11.jpg) top center no-repeat;
-}
-
-.bg-12 {
-  background: url(../img/bg/12.jpg) center center no-repeat;
-}
-
-.bg-13 {
-  background: rgba(0, 0, 0, 0) url("../img/bg/13.jpg") no-repeat scroll center -6px;
-}
-
-/*-- Overlay Color --*/
+*-- Overlay Color --*/
 [data-overlay=light]::before {
   background-color: #ffffff;
 }
@@ -3295,10 +3233,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   -moz-border-radius: 20px;
   color: #aeaeae;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
-  margin: 0 7.5px;
-  padding: 7px 25px;
+  margin: 0 2px;
+  padding: 7px 11px;
   z-index: 1;
   -webkit-transition: all 0.3s ease-in-out 0s;
   -o-transition: all 0.3s ease-in-out 0s;
@@ -6464,6 +6402,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .footer-area .footer-bottom-area .footer-text-bottom p a:hover {
   color: #222222;
+}
+.footer-area .footer-bottom-area .footer-text-bottom p {
+  font-size: 12px;
 }
 @media only screen and (max-width: 767px) {
   .footer-area .footer-bottom-area .payment-img {
