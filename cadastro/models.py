@@ -4,12 +4,9 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from cpf_field.models import CPFField
 from django.http import HttpResponse
-from django.utils.html import format_html
 from validate_email import validate_email
 from django.core.validators import MinValueValidator
-from PIL import Image
 
-# Create your models here.
 class Alunos(models.Model):
     nome = models.CharField(max_length=100, blank=True)
     ra = models.IntegerField(unique=True)
@@ -55,7 +52,7 @@ class Livros(models.Model):
     autor = models.CharField(max_length=100)
     editora = models.CharField(max_length=50)
     categoria = models.ForeignKey(Categorias, on_delete=models.CASCADE)
-    imagem = models.ImageField(upload_to='static/img/livros/')
+    imagem = models.ImageField(upload_to='livros/')
     destaque = models.BooleanField(default=False)
     data_cadastro = models.DateTimeField(auto_now_add=True)
     descricao = models.TextField()
