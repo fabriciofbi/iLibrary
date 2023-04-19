@@ -10,4 +10,50 @@
             </div>
         </div>
     <!-- Conteudo - Fim -->
+
+    <section>
+        <div class="container">
+            <div class="container">
+                <div class="product-tab-list product-tab-list-2 nav fix" role="tablist">
+                    <a href="#TODOS" data-bs-toggle="tab" role="tab" aria-selected="true" aria-controls="TODOS" class="active" tabindex="-1">TODAS</a>
+                    {% for letra in letras_com_categorias %}
+                    <a href="#{{ letra.primeira_letra }}" data-bs-toggle="tab" role="tab" aria-selected="false" aria-controls="{{ letra.primeira_letra }}" class="" tabindex="-1">{{ letra.primeira_letra }}</a>
+                    {% endfor %}
+                </div>
+                <div class="tab-content text-center">
+
+                    <div class="tab-pane fade show active" id="TODOS" role="tabpanel">
+                        <ul class="list-group">
+                            {% for categoria in categorias %}
+                                {% for a in categoria.categorias %}
+                                    <li class="list-group-item">{{ a.categoria }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    {% for letra in letras_com_categorias %}
+                    <div class="tab-pane fade" id="{{ letra.primeira_letra }}" role="tabpanel">
+                        <ul class="list-group">
+                            {% for categoria in categorias %}
+                            {% if categorias.letra == letra.primeira_letra %}
+                            {% for a in categoria.categorias %}
+                            <li class="list-group-item">{{ a.categorias }}</li>
+                            {% endfor %}
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
 {% endblock %}
