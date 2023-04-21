@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.db.models.functions import Substr
 
 from .models import Livros
+from .models import Categorias
 
 # Create your views here.
 def index(request):
@@ -41,10 +42,30 @@ def autores(request):
 
     return render(request, 'autores.html', context)
 
-
-
 def editoras(request):
-    return render(request, 'editoras.html')
+    def lista_letras_com_editoras():
+        letras = Livros.objects.annotate(primeira_letra=Substr('editora',1,1)).values('primeira_letra').distinct().order_by('primeira_letra')
+        return letras
+
+    def lista_editoras_por_letra(letra):
+        editoras = Livros.objects.filter(editora__startswith=letra).order_by('editora')
+        return editoras
+
+    def todas_as_editoras(letra):
+        todas_editoras = Livros.objects.all()
+        return todas_editoras
+
+
+    letras_com_editoras = lista_letras_com_editoras()
+    editoras = []
+    todas_as_editoras = []
+    for letra in letras_com_editoras:
+        editoras_por_letra = lista_editoras_por_letra(letra['primeira_letra'])
+        editoras.append({'letra': letra['primeira_letra'], 'editoras': editoras_por_letra})
+
+    context = {'letras_com_editoras': letras_com_editoras, 'editoras': editoras, 'todas_as_editoras': todas_as_editoras}
+
+    return render(request, 'editoras.html', context)
 
 def categorias(request):
     return render(request, 'categorias.html')
