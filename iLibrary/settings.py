@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ilibrary',
         'USER': 'root',
-       'PASSWORD': '#Gabriel@2509',
+       'PASSWORD': 'Univesp2023',
        'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -136,5 +136,7 @@ MEDIA_URL = '/imagens/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGOUT_REDIRECT_URL = '/'
 
 

@@ -71,7 +71,20 @@
                                         </div>
                                         <h5><a href="produto/{{ livro.id }}">{{ livro.titulo }}</a></h5>
                                         <h6><a href="produto/{{ livro.id }}">{{ livro.autor }}</a></h6>
-                                        <h6>Disponível: {{ livro.qtd_disponivel }}</h6>
+                                        {% if livro.qtd_disponivel > 0 %}
+                                            <span class="new-price text-success">Disponível: {{ livro.qtd_disponivel }}</span>
+                                        {% endif %}
+                                        {% if livro.qtd_disponivel == 0 %}
+                                            <span class="text-danger">Disponível: {{ livro.qtd_disponivel }}</span>
+                                        {% endif %}
+
+                                        {% if livro.qtd_disponivel > 0 %}
+                                                <a type="button" class="btn btn-success mt-1" href="#">Emprestar</a>
+                                        {% endif %}
+
+                                        {% if livro.qtd_disponivel == 0 %}
+                                            <a type="button" class="btn btn-light disabled" href="#">Emprestar</a>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -103,9 +116,23 @@
                                         <i class="fa fa-star-o"></i>
                                     </div>
                                     <div class="pro-price">
-                                        <span class="new-price">Disponível: {{ livro.qtd_disponivel }}</span>
+                                        {% if livro.qtd_disponivel > 0 %}
+                                            <span class="new-price">Disponível: {{ livro.qtd_disponivel }}</span>
+                                        {% endif %}
+                                        {% if livro.qtd_disponivel == 0 %}
+                                            <span class="text-danger">Disponível: {{ livro.qtd_disponivel }}</span>
+                                        {% endif %}
                                     </div>
                                     <p>{{ livro.descricao }}</p>
+                                    {% if livro.qtd_disponivel > 0 %}
+                                        <a type="button" class="btn btn-success" href="#">Emprestar</a>
+                                    {% endif %}
+
+                                    {% if livro.qtd_disponivel == 0 %}
+                                        <a type="button" class="btn btn-light disabled" href="http://">Emprestar</a>
+                                    {% endif %}
+                            
+                                    
                                 </div>
                             </div>
                         {% endfor %}
