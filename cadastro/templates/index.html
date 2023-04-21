@@ -20,34 +20,43 @@
                             <a class="list" href="#list" data-bs-toggle="tab" role="tab" aria-selected="false" aria-controls="list"><i class="fa fa-list"></i></a>
                         </div>
                         <div class="shop-items">
-                            <span>Mostrando 1 a 12 de 30 (3 Páginas) </span>
+                            <span>Mostrando {{ page_obj.start_index }} a {{ page_obj.end_index }} de {{ page_obj.paginator.count }} ({{ page_obj.paginator.num_pages }} Páginas) </span>
                         </div>
                     </div>
-                    <div class="shop-results-wrapper">
-                        <div class="shop-results"><span>Mostrar:</span>
-                            <div class="shop-select">
-                                <select name="number" id="number">
-                                    <option value="12">12</option>
-                                    <option value="24">24</option>
-                                    <option value="48">48</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="shop-results"><span>Ordenado por:</span>
-                            <div class="shop-select">
-                                <select name="sort" id="sort">
-                                    <option value="position">Ordem Padrão</option>
-                                    <option value="p-name">Alfabética</option>
-                                    <option value="p-price">Qtde Disponível</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                    {% if is_paginated %}
+                                <div class="pagination-upper">
+                                    <nav aria-label="navigation">
+                                        <ul class="pagination">
+                                            {% if page_obj.has_previous %}
+                                                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                                            {% else %}
+                                                <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
+                                            {% endif %}
+
+                                            {% for num in paginator.page_range %}
+                                                {% if page_obj.number == num %}
+                                                    <li class="page-item active"><a class="page-link" href="#">{{ num }}</a></li>
+                                                {% else %}
+                                                    <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                                                {% endif %}
+                                            {% endfor %}
+
+                                            {% if page_obj.has_next %}
+                                                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                                            {% else %}
+                                                <li class="page-item disabled"><a class="page-link" href="#">&raquo;</a></li>
+                                            {% endif %}
+
+                                        </ul>
+                                    </nav>
+                                </div>
+                            {% endif %}
+
                 </div>
                 <div class="ht-product-shop tab-content text-center">
                     <div class="tab-pane active show fade" id="grid" role="tabpanel">
                         <div class="row">
-                            {% for livro in livros %}
+                            {% for livro in page_obj %}
                             <div class="col-lg-2 col-md-4 col-sm-6">
                                 <div class="single-product-item">
                                     <div class="product-image">
@@ -80,7 +89,7 @@
                     </div>
 
                     <div class="tab-pane fade text-start" id="list" role="tabpanel">
-                        {% for livro in livros %}
+                        {% for livro in page_obj %}
                             <div class="single-product-item">
                                 <div class="product-image">
                                     <a href="produto/{{ livro.id }}">
@@ -111,18 +120,36 @@
                         {% endfor %}
                     </div>
                 </div>
-                <div class="pagination-wrapper">
-                    <p>Mostrando 1 a 12 de 30 (3 Páginas) </p>
-                    <nav aria-label="navigation">
-                        <ul class="pagination">
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">></a></li>
-                            <li class="page-item"><a class="page-link" href="#">>|</a></li>
-                        </ul>
-                    </nav>
-                </div>
+
+                {% if is_paginated %}
+                    <div class="pagination-wrapper">
+                        <nav aria-label="navigation">
+                            <ul class="pagination">
+                                {% if page_obj.has_previous %}
+                                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                                {% else %}
+                                    <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
+                                {% endif %}
+
+                                {% for num in paginator.page_range %}
+                                    {% if page_obj.number == num %}
+                                        <li class="page-item active"><a class="page-link" href="#">{{ num }}</a></li>
+                                    {% else %}
+                                        <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% if page_obj.has_next %}
+                                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                                {% else %}
+                                    <li class="page-item disabled"><a class="page-link" href="#">&raquo;</a></li>
+                                {% endif %}
+
+                            </ul>
+                        </nav>
+                    </div>
+                {% endif %}
+
             </div>
         </div>
         <!-- Shop Area End -->
