@@ -60,12 +60,12 @@
                             <div class="col-lg-2 col-md-4 col-sm-6">
                                 <div class="single-product-item">
                                     <div class="product-image">
-                                        <a href="produto/{{ livro.id }}">
+                                        <a href="{{ livro.imagem.url }}" data-bs-toggle="modal"  data-bs-target="#productModal{{ livro.id }}">
                                             <img src="{{ livro.imagem.url }}" alt="" class="img-fluid">
                                         </a>
                                         <div class="product-hover">
                                             <ul class="hover-icon-list">
-                                                <li><a href="{{ livro.imagem.url }}" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
+                                                <li><a href="{{ livro.imagem.url }}" data-bs-toggle="modal"  data-bs-target="#productModal{{ livro.id }}"><i class="icon icon-Search"></i></a></li>
                                             </ul>
 
                                         </div>
@@ -78,12 +78,72 @@
                                             <i class="fa fa-star-o color"></i>
                                             <i class="fa fa-star-o"></i>
                                         </div>
-                                        <h5><a href="produto/{{ livro.id }}">{{ livro.titulo }}</a></h5>
-                                        <h6><a href="produto/{{ livro.id }}">{{ livro.autor }}</a></h6>
+                                        <h5><a href="{{ livro.imagem.url }}" data-bs-toggle="modal"  data-bs-target="#productModal{{ livro.id }}">{{ livro.titulo }}</a></h5>
+                                        <h6><a href="{{ livro.imagem.url }}" data-bs-toggle="modal"  data-bs-target="#productModal{{ livro.id }}">{{ livro.autor }}</a></h6>
                                         <h6>Disponível: {{ livro.qtd_disponivel }}</h6>
                                     </div>
                                 </div>
                             </div>
+
+
+                            <!-- MODAL LIVROS -->
+                                <div class="modal fade productModal" id="productModal{{ livro.id }}" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times"></i></span></button>
+                                            <div class="quick-view-container">
+                                                <div class="column-left">
+                                                    <div class="single-product-img">
+                                                        <img src="{{ livro.imagem.url }}" alt="" class="img-fluid">
+                                                    </div>
+                                                </div>
+                                                <div class="column-right text-start">
+                                                    <div class="quick-view-text">
+                                                        <h2>{{ livro.titulo }}</h2>
+                                                        {% if livro.qtd_disponivel > 0 %}
+                                                            <h3 class="q-product-price text-success">Disponivel: {{ livro.qtd_disponivel }}</h3>
+                                                        {% else %}
+                                                            <h3 class="q-product-price text-danger">Disponivel: {{ livro.qtd_disponivel }}</h3>
+                                                        {% endif %}
+                                                        <p>{{ livro.descricao }}</p>
+                                                        <div class="input-cart">
+                                                            {% if livro.qtd_disponivel > 0 %}
+                                                                    <input value="1" type="number" readonly>
+                                                                <button class="default-btn">Reservar</button>
+                                                            {% else %}
+                                                                    <input value="0" type="number" readonly>
+                                                                <button class="default-btn disabled">Reservar</button>
+                                                            {% endif %}
+                                                        </div>
+                                                        <div class="share-product">
+                                                            <h4>Compartilhe este livro:</h4>
+                                                            <div class="social-link">
+                                                                <a href="#" class="facebook">
+                                                                    <i class="fa fa-facebook"></i>
+                                                                </a>
+                                                                <a href="#" class="twitter">
+                                                                    <i class="fa fa-twitter"></i>
+                                                                </a>
+                                                                <a href="#" class="pinterest">
+                                                                    <i class="fa fa-pinterest"></i>
+                                                                </a>
+                                                                <a href="#" class="google">
+                                                                    <i class="fa fa-google-plus"></i>
+                                                                </a>
+                                                                <a href="#" class="linkedin">
+                                                                    <i class="fa fa-linkedin"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <!-- END MODAL LIVROS -->
+
+
                             {% endfor %}
                         </div>
                     </div>
@@ -92,18 +152,18 @@
                         {% for livro in page_obj %}
                             <div class="single-product-item">
                                 <div class="product-image">
-                                    <a href="produto/{{ livro.id }}">
+                                    <a href="#productModal{{ livro.id }}">
                                         <img src="{{ livro.imagem.url }}" alt="">
                                     </a>
                                     <div class="product-hover">
                                         <ul class="hover-icon-list">
-                                            <li><a href="{{ livro.imagem.url }" data-bs-toggle="modal"  data-bs-target="#productModal"><i class="icon icon-Search"></i></a></li>
+                                            <li><a href="{{ livro.imagem.url }}" data-bs-toggle="modal" data-bs-target="#productModal{{ livro.id }}"><i class="icon icon-Search"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="product-text">
-                                    <h5><a href="#">{{ livro.titulo }}</a></h5>
-                                    <h6><a href="#">{{ livro.autor }}</a></h6>
+                                    <h5><a href="{{ livro.imagem.url }}" data-bs-toggle="modal" data-bs-target="#productModal{{ livro.id }}">{{ livro.titulo }}</a></h5>
+                                    <h6><a href="{{ livro.imagem.url }}" data-bs-toggle="modal" data-bs-target="#productModal{{ livro.id }}">{{ livro.autor }}</a></h6>
                                     <div class="product-rating">
                                         <i class="fa fa-star-o color"></i>
                                         <i class="fa fa-star-o color"></i>
@@ -153,4 +213,6 @@
             </div>
         </div>
         <!-- Shop Area End -->
+
+
 {% endblock %}

@@ -1,47 +1,35 @@
 import os
 
+from django.views.generic import ListView
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.db.models.functions import Substr
-
 from .models import Livros
 
-# Create your views here.
+
 def index(request):
     context = {
-        'livros': Livros.objects.filter(destaque=True)[:24]
+        'livros': Livros.objects.filter(destaque=True).distinct()
     }
     return render(request, 'index.html', context)
+
+class IndexListView(ListView):
+    template_name = 'index.html'
+    model = Livros
+    paginate_by = 12
+    ordering = 'id'
 
 def livros(request):
     return render(request, 'livros.html')
 
 def autores(request):
-    def lista_letras_com_autores():
-        letras = Livros.objects.annotate(primeira_letra=Substr('autor',1,1)).values('primeira_letra').distinct().order_by('primeira_letra')
-        return letras
+    autores = Livros.objects.order_by('autor').distinct().values_list('autor', flat=True)
 
-    def lista_autores_por_letra(letra):
-        autores = Livros.objects.filter(autor__startswith=letra).order_by('autor')
-        return autores
-
-    def todos_os_autores(letra):
-        todos_autores = Livros.objects.all()
-        return todos_autores
-
-
-    letras_com_autores = lista_letras_com_autores()
-    autores = []
-    todos_os_autores = []
-    for letra in letras_com_autores:
-        autores_por_letra = lista_autores_por_letra(letra['primeira_letra'])
-        autores.append({'letra': letra['primeira_letra'], 'autores': autores_por_letra})
-
-    context = {'letras_com_autores': letras_com_autores, 'autores': autores, 'todos_os_autores': todos_os_autores}
+    context = {
+        'autores': autores
+    }
 
     return render(request, 'autores.html', context)
-
-
 
 def editoras(request):
     return render(request, 'editoras.html')
@@ -63,3 +51,4 @@ def favicon_view(request):
     favicon_path = os.path.join(os.path.dirname(__file__), '..', 'favicon.ico')
     with open(favicon_path, 'rb') as f:
         return HttpResponse(f.read(), content_type='image/x-icon')
+

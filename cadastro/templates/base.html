@@ -17,7 +17,6 @@
         <link rel="stylesheet" href="{% static 'css/plugins.css' %}">
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="stylesheet" href="{% static 'js/vendor/modernizr-3.5.0.min.js' %}">
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 
         {% block extra_head %}
         {% endblock %}
@@ -31,7 +30,7 @@
                 <div class="row">
                     <div class="col-lg-2 col-sm-6">
                         <div class="logo text-center">
-                            <a href="{% url 'index' %}"><img src="imagens/logo.png" alt="iLibrary"></a>
+                            <a href="{% url 'index' %}"><img src="/imagens/logo.png" alt="iLibrary"></a>
                         </div>
                     </div>
                     <div class="col-lg-6 offset-lg-2 display-none-md display-none-xs">
@@ -116,5 +115,9 @@
         <script src="{% static 'js/plugins.js' %}"></script>
         <script src="{% static 'js/ajax-mail.js' %}"></script>
         <script src="{% static 'js/main.js' %}"></script>
+
+        {% block js_footer %}
+        {% endblock %}
+
     </body>
 </html>

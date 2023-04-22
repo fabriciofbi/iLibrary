@@ -2,6 +2,10 @@
 
 {% block 'titulo' %} iLibrary - Gestão de Bibliotecas {% endblock %}
 
+{% block extra_head %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
+{% endblock %}
+
 {% block 'conteudo' %}  
     <!-- Conteudo - Inicio -->
         <div class="breadcrumb-area bg-12 text-center">
@@ -13,47 +17,48 @@
 
     <section>
         <div class="container">
-            <div class="container">
-                <div class="product-tab-list product-tab-list-2 nav fix" role="tablist">
-                    <a href="#TODOS" data-bs-toggle="tab" role="tab" aria-selected="true" aria-controls="TODOS" class="active" tabindex="-1">TODOS</a>
-                    {% for letra in letras_com_autores %}
-                    <a href="#{{ letra.primeira_letra }}" data-bs-toggle="tab" role="tab" aria-selected="false" aria-controls="{{ letra.primeira_letra }}" class="" tabindex="-1">{{ letra.primeira_letra }}</a>
-                    {% endfor %}
-                </div>
-                <div class="tab-content text-center">
-
-                    <div class="tab-pane fade show active" id="TODOS" role="tabpanel">
-                        <ul class="list-group">
-                            {% for autor in autores %}
-                                {% for a in autor.autores %}
-                                    <li class="list-group-item">{{ a.autor }}</li>
-                                {% endfor %}
-                            {% endfor %}
-                        </ul>
-                    </div>
-
-                    {% for letra in letras_com_autores %}
-                    <div class="tab-pane fade" id="{{ letra.primeira_letra }}" role="tabpanel">
-                        <ul class="list-group">
-                            {% for autor in autores %}
-                            {% if autor.letra == letra.primeira_letra %}
-                            {% for a in autor.autores %}
-                            <li class="list-group-item">{{ a.autor }}</li>
-                            {% endfor %}
-                            {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
+            <table id="tabela-exemplo" class="table table-striped text-center">
+              <thead>
+                <tr class="text-center">
+                  <th>Autores</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for autor in autores %}
+                    <tr><td>{{ autor }}</td></tr>
+                {% endfor %}
+              </tbody>
+            </table>
         </div>
     </section>
 
+{% endblock %}
 
+{% block js_footer %}
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
 
-
-
-
-
+    <script>
+        $(document).ready(function() {
+          $('#tabela-exemplo').DataTable({
+            "paging": true,
+            "searching": true,
+            "pageLength": 10,
+            "language": {
+              "lengthMenu": "Exibir _MENU_ registros por página",
+              "zeroRecords": "Nenhum registro encontrado",
+              "info": "Exibindo _START_ a _END_ de _TOTAL_ registros",
+              "infoEmpty": "Sem registros disponíveis",
+              "infoFiltered": "",
+              "search": "Buscar:",
+              "paginate": {
+                "first": "<<",
+                "last": ">>",
+                "next": ">",
+                "previous": "<"
+              }
+            }
+          });
+        });
+    </script>
 {% endblock %}

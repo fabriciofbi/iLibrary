@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from validate_email import validate_email
 from django.core.validators import MinValueValidator
 
+
 class Alunos(models.Model):
     nome = models.CharField(max_length=100, blank=True)
     ra = models.IntegerField(unique=True)
