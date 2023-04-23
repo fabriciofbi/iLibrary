@@ -2,10 +2,10 @@ import os
 
 from django.views.generic import ListView
 from django.http import HttpResponse
-from django.shortcuts import render
-from django.db.models.functions import Substr
-from .models import Livros
-
+from .models import Livros, Categorias
+from .forms import ContatoForm
+from django.contrib import messages
+from django.shortcuts import render, redirect
 
 def index(request):
     context = {
@@ -20,7 +20,13 @@ class IndexListView(ListView):
     ordering = 'id'
 
 def livros(request):
-    return render(request, 'livros.html')
+    livros = Livros.objects.all()
+
+    context = {
+        'livros': livros
+    }
+
+    return render(request, 'livros.html', context)
 
 def autores(request):
     autores = Livros.objects.order_by('autor').distinct().values_list('autor', flat=True)
@@ -42,13 +48,40 @@ def editoras(request):
 
 
 def categorias(request):
-    return render(request, 'categorias.html')
+    categorias = Categorias.objects.all()
+
+    context = {
+        'categorias': categorias
+    }
+
+    return render(request, 'categorias.html', context)
+
 
 def contato(request):
-    return render(request, 'contato.html')
+    form = ContatoForm(request.POST or None)
+    if str(request.method) == 'POST':
+        if form.is_valid():
+            nome = form.cleaned_data['nome']
+            email = form.cleaned_data['email']
+            assunto = form.cleaned_data['assunto']
+            mensagem = form.cleaned_data['mensagem']
 
-def teste(request):
-    return render(request, 'teste.html')
+            print('Mensagem Enviada')
+            print(f'Nome: {nome}')
+            print(f'Email: {email}')
+            print(f'Assunto: {assunto}')
+            print(f'Mensagem: {mensagem}')
+
+            # Mostrar mensagem de sucesso
+            messages.success(request, 'Mensagem enviada com sucesso!')
+            form = ContatoForm()
+    else:
+        messages.error(request, 'Erro ao Enviar Mensagem!')
+
+    context = {
+        'form': form
+    }
+    return render(request, 'contato.html', context)
 
 def busca(request):
     return render(request, 'busca.html')

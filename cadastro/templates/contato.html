@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block 'titulo' %} iLibrary - Gestão de Bibliotecas {% endblock %}
+{% block 'titulo' %} Contato - iLibrary - Gestão de Bibliotecas {% endblock %}
 
 {% block 'conteudo' %}  
     <!-- Conteudo - Inicio -->
@@ -10,4 +10,37 @@
             </div>
         </div>
     <!-- Conteudo - Fim -->
+
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+                <div class="container">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+
+
+    <section class="bg-gray pt-3 pb-3">
+        <div class="container">
+            <div class="row">
+                <div class="offset-2 col-8">
+                    <form action="{% url 'contato' %}" method="post" class="form">
+                        {% csrf_token %}
+
+                        <!-- Inserir Formulario Aqui -->
+                        {{ form.as_p }}
+
+                        <button type="submit" class="default-btn">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
 {% endblock %}

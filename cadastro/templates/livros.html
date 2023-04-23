@@ -1,13 +1,72 @@
 {% extends 'base.html' %}
 
-{% block 'titulo' %} iLibrary - Gestão de Bibliotecas {% endblock %}
+{% block 'titulo' %} Livros - iLibrary - Gestão de Bibliotecas {% endblock %}
 
-{% block 'conteudo' %}  
+{% block extra_head %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
+{% endblock %}
+
+{% block 'conteudo' %}
     <!-- Conteudo - Inicio -->
-        <div class="breadcrumb-area text-center">
+        <div class="breadcrumb-area bg-12 text-center">
             <div class="container">
                 <h2>Livros</h2>
             </div>
         </div>
     <!-- Conteudo - Fim -->
+
+    <section class="bg-gray pt-3 pb-3">
+        <div class="container">
+            <table id="tabela-exemplo" class="table table-striped text-center">
+              <thead>
+                <tr class="text-center">
+                  <th>Titulo</th>
+                  <th>Ano</th>
+                  <th>Autor</th>
+                  <th>Editora</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for livro in livros %}
+                <tr>
+                    <td>{{ livro.titulo }}</td>
+                    <td>{{ livro.ano }}</td>
+                    <td>{{ livro.autor }}</td>
+                    <td>{{ livro.editora }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block js_footer %}
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+          $('#tabela-exemplo').DataTable({
+            "paging": true,
+            "searching": true,
+            "pageLength": 10,
+            "language": {
+              "lengthMenu": "Exibir _MENU_ registros por página",
+              "zeroRecords": "Nenhum registro encontrado",
+              "info": "Exibindo _START_ a _END_ de _TOTAL_ registros",
+              "infoEmpty": "Sem registros disponíveis",
+              "infoFiltered": "",
+              "search": "Buscar:",
+              "paginate": {
+                "first": "<<",
+                "last": ">>",
+                "next": ">",
+                "previous": "<"
+              }
+            }
+          });
+        });
+    </script>
 {% endblock %}
