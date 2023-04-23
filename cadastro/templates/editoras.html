@@ -2,7 +2,11 @@
 
 {% block 'titulo' %} iLibrary - Gestão de Bibliotecas {% endblock %}
 
-{% block 'conteudo' %}  
+{% block extra_head %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
+{% endblock %}
+
+{% block 'conteudo' %}
     <!-- Conteudo - Inicio -->
         <div class="breadcrumb-area bg-12 text-center">
             <div class="container">
@@ -10,4 +14,51 @@
             </div>
         </div>
     <!-- Conteudo - Fim -->
+
+    <section>
+        <div class="container">
+            <table id="tabela-exemplo" class="table table-striped text-center">
+              <thead>
+                <tr class="text-center">
+                  <th>Editoras</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for editora in editoras %}
+                    <tr><td>{{ editora }}</td></tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block js_footer %}
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+          $('#tabela-exemplo').DataTable({
+            "paging": true,
+            "searching": true,
+            "pageLength": 10,
+            "language": {
+              "lengthMenu": "Exibir _MENU_ registros por página",
+              "zeroRecords": "Nenhum registro encontrado",
+              "info": "Exibindo _START_ a _END_ de _TOTAL_ registros",
+              "infoEmpty": "Sem registros disponíveis",
+              "infoFiltered": "",
+              "search": "Buscar:",
+              "paginate": {
+                "first": "<<",
+                "last": ">>",
+                "next": ">",
+                "previous": "<"
+              }
+            }
+          });
+        });
+    </script>
 {% endblock %}

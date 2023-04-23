@@ -32,7 +32,14 @@ def autores(request):
     return render(request, 'autores.html', context)
 
 def editoras(request):
-    return render(request, 'editoras.html')
+    editoras = Livros.objects.order_by('editora').distinct().values_list('editora', flat=True)
+
+    context = {
+        'editoras': editoras
+    }
+
+    return render(request, 'editoras.html', context)
+
 
 def categorias(request):
     return render(request, 'categorias.html')
