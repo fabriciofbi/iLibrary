@@ -6,6 +6,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('cadastro.urls')),
+    path('', include('locacao.urls')),
+    path('', include('devolucao.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.AdminSite.site_header = 'iLibrary - Administração'

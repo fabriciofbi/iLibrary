@@ -33,7 +33,7 @@
                             <a href="{% url 'index' %}"><img src="/imagens/logo.png" alt="iLibrary"></a>
                         </div>
                     </div>
-                    <div class="col-lg-6 offset-lg-2 display-none-md display-none-xs">
+                    <div class="col-lg-7 offset-lg-1 display-none-md display-none-xs">
                         <div class="ht-main-menu">
                             <nav>
                                 <ul>
@@ -42,6 +42,7 @@
                                     <li {% if request.path == '/categorias/' %}class="active"{% endif %}><a href="{% url 'categorias' %}">Categorias</a></li>
                                     <li {% if request.path == '/editoras/' %}class="active"{% endif %}><a href="{% url 'editoras' %}">Editoras</a></li>
                                     <li {% if request.path == '/livros/' %}class="active"{% endif %}><a href="{% url 'livros' %}">Livros</a></li>
+                                    <li {% if request.path == '/equipe/' %}class="active"{% endif %}><a href="{% url 'equipe' %}">Nossa Equipe</a></li>
                                     <li {% if request.path == '/contato/' %}class="active"{% endif %}><a href="{% url 'contato' %}">Contato</a></li>
                                 </ul>
                             </nav>
@@ -80,6 +81,7 @@
                             <li><a href="{% url 'categorias' %}">Categorias</a></li>
                             <li><a href="{% url 'editoras' %}">Editoras</a></li>
                             <li><a href="{% url 'livros' %}">Livros</a></li>
+                            <li><a href="{% url 'equipe' %}">Nossa Equipe</a></li>
                             <li><a href="{% url 'contato' %}">Contato</a></li>
                         </ul>
                     </nav>

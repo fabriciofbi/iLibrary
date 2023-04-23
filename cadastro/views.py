@@ -86,6 +86,9 @@ def contato(request):
 def busca(request):
     return render(request, 'busca.html')
 
+def equipe(request):
+    return render(request, 'equipe.html')
+
 def favicon_view(request):
     # Caminho completo para o arquivo "favicon.ico"
     favicon_path = os.path.join(os.path.dirname(__file__), '..', 'favicon.ico')
