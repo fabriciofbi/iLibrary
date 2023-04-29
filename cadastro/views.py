@@ -2,14 +2,18 @@ import os
 
 from django.views.generic import ListView
 from django.http import HttpResponse
-from .models import Livros, Categorias
+from .models import Livros, Categorias, Alunos, Autores, Editoras
 from .forms import ContatoForm
 from django.contrib import messages
 from django.shortcuts import render, redirect
 
+from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from .serializers import AlunosSerializer, LivrosSerializer, EditorasSerializer, AutoresSerializer, CategoriasSerializer
+
 def index(request):
     context = {
-        'livros': Livros.objects.filter(destaque=True).distinct()
+        'livros': Livros.objects.filter(destaque=True)
     }
     return render(request, 'index.html', context)
 
@@ -94,4 +98,29 @@ def favicon_view(request):
     favicon_path = os.path.join(os.path.dirname(__file__), '..', 'favicon.ico')
     with open(favicon_path, 'rb') as f:
         return HttpResponse(f.read(), content_type='image/x-icon')
+
+def teste(request):
+    return render(request, 'teste.html')
+
+#Criando View para a API
+class AlunosViewSet(viewsets.ModelViewSet):
+    queryset = Alunos.objects.all()
+    serializer_class = AlunosSerializer
+
+class CategoriasViewSet(viewsets.ModelViewSet):
+    queryset = Categorias.objects.all()
+    serializer_class = CategoriasSerializer
+
+class LivrosViewSet(viewsets.ModelViewSet):
+    queryset = Livros.objects.all()
+    serializer_class = LivrosSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+class EditorasViewSet(viewsets.ModelViewSet):
+    queryset = Editoras.objects.all()
+    serializer_class = EditorasSerializer
+
+class AutoresViewSet(viewsets.ModelViewSet):
+    queryset = Autores.objects.all()
+    serializer_class = AutoresSerializer
 

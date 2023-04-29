@@ -33,3 +33,9 @@ class Locacao(models.Model):
         # Baixa de 1 item no estoque de livros ao locar
         self.livro.qtd_disponivel -= 1
         self.livro.save()
+
+    def delete(self, *args, **kwargs):
+        # Aumenta em 1 a quantidade disponível do livro ao excluir a locação
+        self.livro.qtd_disponivel += 1
+        self.livro.save()
+        super(Locacao, self).delete(*args, **kwargs)

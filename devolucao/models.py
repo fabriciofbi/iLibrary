@@ -20,3 +20,10 @@ class Devolucao(models.Model):
         self.locacao.livro.qtd_disponivel += 1
         self.locacao.livro.save()
         super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        self.locacao.devolvido = False
+        self.locacao.save()
+        self.locacao.livro.qtd_disponivel -= 1
+        self.locacao.livro.save()
+        super().delete(*args, **kwargs)

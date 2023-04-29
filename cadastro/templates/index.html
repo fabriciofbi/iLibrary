@@ -80,7 +80,11 @@
                                         </div>
                                         <h5><a href="{{ livro.imagem.url }}" data-bs-toggle="modal"  data-bs-target="#productModal{{ livro.id }}">{{ livro.titulo }}</a></h5>
                                         <h6><a href="{{ livro.imagem.url }}" data-bs-toggle="modal"  data-bs-target="#productModal{{ livro.id }}">{{ livro.autor }}</a></h6>
-                                        <h6>Disponível: {{ livro.qtd_disponivel }}</h6>
+                                        {% if livro.qtd_disponivel > 0 %}
+                                            <h6 class="text-success">Disponível: {{ livro.qtd_disponivel }}</h6>
+                                        {% else %}
+                                            <h6 class="text-danger">Disponível: {{ livro.qtd_disponivel }}</h6>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +176,11 @@
                                         <i class="fa fa-star-o"></i>
                                     </div>
                                     <div class="pro-price">
-                                        <span class="new-price">Disponível: {{ livro.qtd_disponivel }}</span>
+                                        {% if livro.qtd_disponivel > 0 %}
+                                            <span class="new-price text-success">Disponível: {{ livro.qtd_disponivel }}</span>
+                                        {% else %}
+                                            <span class="new-price text-danger">Disponível: {{ livro.qtd_disponivel }}</span>
+                                        {% endif %}
                                     </div>
                                     <p>{{ livro.descricao }}</p>
                                 </div>

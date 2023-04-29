@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'cpf_field',
     'locacao',
     'devolucao',
+    'rest_framework',
+    'django_select2',
 ]
 
 MIDDLEWARE = [

@@ -1,7 +1,13 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
+from .views import livros, autores, editoras, categorias, contato, favicon_view, busca, IndexListView, equipe, teste, AlunosViewSet, LivrosViewSet, EditorasViewSet, AutoresViewSet, CategoriasViewSet
 
-from .views import livros, autores, editoras, categorias, contato, favicon_view, busca, IndexListView, equipe
-
+router = routers.DefaultRouter()
+router.register('alunos', AlunosViewSet)
+router.register('livros', LivrosViewSet)
+router.register('autores', AutoresViewSet)
+router.register('editoras', EditorasViewSet)
+router.register('categorias', CategoriasViewSet)
 urlpatterns = [
     path('', IndexListView.as_view(), name='index'),
     path('livros/', livros, name='livros'),
@@ -10,6 +16,8 @@ urlpatterns = [
     path('categorias/', categorias, name='categorias'),
     path('contato/', contato, name='contato'),
     path('equipe/', equipe, name='equipe'),
-    path('busca/', busca, name='busca.html'),
+    path('busca/', busca, name='busca'),
+    path('teste/', teste, name='teste'),
     path('favicon.ico', favicon_view, name='favicon'),
+    path('api/', include(router.urls)),
 ]

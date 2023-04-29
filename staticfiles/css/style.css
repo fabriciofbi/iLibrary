@@ -240,7 +240,7 @@ ul {
   text-transform: uppercase;
 }
 
-/*-- 
+/*--
     Custom Row Column
 -----------------------------------------*/
 .row-10 {
@@ -262,7 +262,7 @@ ul {
   padding-right: 15px;
 }
 
-/*-- 
+/*--
     Margin & Padding
 -----------------------------------------*/
 /*-- Margin Top --*/
@@ -909,7 +909,7 @@ ul {
   padding-bottom: 200px;
 }
 
-/*-- 
+/*--
     Input Placeholder
 -----------------------------------------*/
 input:-moz-placeholder, textarea:-moz-placeholder {
@@ -932,7 +932,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 
-/*-- 
+/*--
     Animation
 -----------------------------------------*/
 @-webkit-keyframes slideZoomIn {
@@ -973,8 +973,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
           animation-name: slideZoomIn;
 }
 
-/*-- 
-    Scroll Up 
+/*--
+    Scroll Up
 -----------------------------------------*/
 #scrollUp {
   width: 40px;
@@ -1143,7 +1143,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   padding: 0 25px;
   position: relative;
 }
-/*-- 
+/*--
     Slick arrow
 -----------------------------------------*/
 .slick-arrow {
@@ -1204,7 +1204,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   display: none;
 }
 
-/*-- 
+/*--
     Page Pagination
 -----------------------------------------*/
 .ht-page-pagination-one {
@@ -2476,7 +2476,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   right: 10px;
   top: 10px;
   width: 25px;
-  z-index: 1;
+  z-index: 9999;
 }
 .modal .modal-dialog .modal-content .modal-header .close:hover {
   color: #78a206;
@@ -3266,7 +3266,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .product-tab-list.product-tab-list-2 a:nth-of-type(3) {
   margin-left: inherit;
-  margin-left: 8px;
+  margin-left: 2px;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -5755,10 +5755,21 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   margin-top: 12px;
   padding-top: 50px;
 }
+
+.post-area .pagination-upper {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .post-area .pagination-wrapper {
     margin-top: 10px;
     margin-bottom: 60px;
+  }
+  .post-area .pagination-upper {
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -5766,6 +5777,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     margin-top: 20px;
     margin-bottom: 18px;
     padding-top: 47px;
+  }
+  .post-area .pagination-upper {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
   }
 }
 .post-area.blog-area .post-comment-area {
@@ -6848,8 +6864,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   opacity: 1;
 }
 .shop-area .pagination-wrapper {
-  margin-top: 45px;
-  padding-top: 48px;
+  margin-top: 20px;
+  padding-top: 20px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .shop-area .pagination-wrapper {
@@ -8802,8 +8818,24 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
           justify-content: space-between;
   padding: 0 15px;
 }
+.pagination-upper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 15px;
+}
 @media only screen and (max-width: 767px) {
   .pagination-wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column;
+            flex-flow: column;
+  }
+  .pagination-upper {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-flow: column;
@@ -8814,13 +8846,23 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   padding-top: 17px;
   color: #7b7b7b;
 }
+.pagination-upper p {
+  padding-top: 17px;
+  color: #7b7b7b;
+}
 @media only screen and (max-width: 767px) {
   .pagination-wrapper p {
+    margin-bottom: 0;
+  }
+  .pagination-upper p {
     margin-bottom: 0;
   }
 }
 .pagination-wrapper nav .pagination {
   padding-top: 12px;
+}
+.pagination-upper nav .pagination {
+  padding-top: 5px;
 }
 .pagination-wrapper nav .pagination .page-item .page-link {
   border: 1px solid #e2e2e2;
@@ -8840,7 +8882,35 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   -moz-border-radius: 50%;
   margin: 0 4.5px;
 }
-.pagination-wrapper nav .pagination .page-item.active .page-link, .pagination-wrapper nav .pagination .page-item .page-link:hover {
+
+.pagination-upper nav .pagination .page-item .page-link, .dataTables_paginate .paginate_button .page-link {
+  border: 1px solid #e2e2e2;
+  background: transparent;
+  -webkit-box-shadow: inset 0 0 0 1px #ffffff;
+          box-shadow: inset 0 0 0 1px #ffffff;
+  font-family: "Oswald", sans-serif;
+  font-size: 12px;
+  width: 35px;
+  height: 35px;
+  line-height: 33px;
+  padding: 0;
+  color: #949494;
+  text-align: center;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  margin: 0 4.5px;
+}
+
+.pagination-wrapper nav .pagination .page-item.active .page-link, .pagination-wrapper nav .pagination .page-item .page-link:hover, .dataTables_paginate .paginate_button .page-link:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #2c2c2c;
+  -webkit-box-shadow: 6px 8px 30px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: 6px 8px 30px 0px rgba(0, 0, 0, 0.1);
+}
+
+.pagination-upper nav .pagination .page-item.active .page-link, .pagination-upper nav .pagination .page-item .page-link:hover, .dataTables_paginate .paginate_button.active .page-link {
   background: #ffffff;
   border-color: #ffffff;
   color: #2c2c2c;
@@ -8852,8 +8922,16 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
 }
+.pagination-upper nav .pagination .page-item:last-child .page-link, .pagination-upper nav .pagination .page-item:first-child .page-link {
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+}
 @media only screen and (max-width: 767px) {
   .pagination-wrapper nav .pagination .page-item:first-child .page-link {
+    margin-left: 0;
+  }
+  .pagination-upper nav .pagination .page-item:first-child .page-link {
     margin-left: 0;
   }
 }
@@ -8962,10 +9040,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #78a206;
 }
 
-#productModal {
+.productModal {
   background: rgba(0, 0, 0, 0.35) none repeat scroll 0 0;
+  z-index: 9999;
 }
-#productModal .modal-dialog {
+.productModal .modal-dialog {
   border-radius: 3px;
   bottom: 0;
   left: 0;
@@ -8977,7 +9056,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   width: 870px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  #productModal .modal-dialog {
+  .productModal .modal-dialog {
     width: 91%;
     overflow-x: hidden;
     overflow-y: auto;
@@ -8985,14 +9064,14 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 @media only screen and (max-width: 767px) {
-  #productModal .modal-dialog {
+  .productModal .modal-dialog {
     width: 91%;
     overflow-x: hidden;
     overflow-y: auto;
     min-height: 330px;
   }
 }
-#productModal .modal-dialog .modal-content {
+.productModal .modal-dialog .modal-content {
   border: 0 none;
   border-radius: 3px;
   -webkit-box-shadow: 1px 0 10px rgba(0, 0, 0, 0.8);
@@ -9000,11 +9079,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   padding: 20px;
 }
 @media only screen and (max-width: 767px) {
-  #productModal .modal-dialog .modal-content {
+  .productModal .modal-dialog .modal-content {
     padding: 10px;
   }
 }
-#productModal .modal-dialog .modal-content .close {
+.productModal .modal-dialog .modal-content .close {
   border: 1px solid #999999;
   border-radius: 3px;
   color: #999999;
@@ -9018,59 +9097,59 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   top: 10px;
   width: 30px;
 }
-#productModal .modal-dialog .modal-content .close:hover {
+.productModal .modal-dialog .modal-content .close:hover {
   border-color: #78a206;
   -webkit-box-shadow: none;
           box-shadow: none;
   color: #78a206;
   opacity: 1;
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-left {
+.productModal .modal-dialog .modal-content .quick-view-container .column-left {
   float: left;
-  width: 40%;
+  width: 30%;
 }
 @media only screen and (max-width: 767px) {
-  #productModal .modal-dialog .modal-content .quick-view-container .column-left {
+  .productModal .modal-dialog .modal-content .quick-view-container .column-left {
     width: 100%;
   }
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-left .tab-content {
+.productModal .modal-dialog .modal-content .quick-view-container .column-left .tab-content {
   margin-bottom: 10px;
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-left .tab-content .tab-pane .single-product-img {
+.productModal .modal-dialog .modal-content .quick-view-container .column-left .tab-content .tab-pane .single-product-img {
   max-width: 100%;
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-left .tab-content .tab-pane .single-product-img img {
+.productModal .modal-dialog .modal-content .quick-view-container .column-left .tab-content .tab-pane .single-product-img img {
   width: 100%;
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-left .single-product-menu .nav {
+.productModal .modal-dialog .modal-content .quick-view-container .column-left .single-product-menu .nav {
   margin: 0 -5px;
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-left .single-product-menu .nav .single-tab-menu {
+.productModal .modal-dialog .modal-content .quick-view-container .column-left .single-product-menu .nav .single-tab-menu {
   padding: 0 5px;
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-left .single-product-menu .nav .single-tab-menu a {
+.productModal .modal-dialog .modal-content .quick-view-container .column-left .single-product-menu .nav .single-tab-menu a {
   border: 1px solid #ebebeb;
   display: block;
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-left .single-product-menu .nav .single-tab-menu a img {
+.productModal .modal-dialog .modal-content .quick-view-container .column-left .single-product-menu .nav .single-tab-menu a img {
   max-width: 100%;
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-left .single-product-menu .nav .single-tab-menu a:hover {
+.productModal .modal-dialog .modal-content .quick-view-container .column-left .single-product-menu .nav .single-tab-menu a:hover {
   color: #ffffff;
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-right {
+.productModal .modal-dialog .modal-content .quick-view-container .column-right {
   overflow: hidden;
   padding-left: 30px;
 }
 @media only screen and (max-width: 767px) {
-  #productModal .modal-dialog .modal-content .quick-view-container .column-right {
+  .productModal .modal-dialog .modal-content .quick-view-container .column-right {
     width: 100%;
     padding-left: 0;
     padding-top: 22px;
   }
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text h2 {
+.productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text h2 {
   color: #2c2c37;
   font-size: 22px;
   font-weight: 400;
@@ -9078,16 +9157,16 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   margin-bottom: 18px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  #productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text h2 {
+  .productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text h2 {
     margin-bottom: 11px;
   }
 }
 @media only screen and (max-width: 767px) {
-  #productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text h2 {
+  .productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text h2 {
     margin-bottom: 13px;
   }
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .q-product-price {
+.productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .q-product-price {
   color: #78a206;
   font-size: 20px;
   font-weight: 600;
@@ -9096,21 +9175,21 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   font-family: "Oswald", sans-serif;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  #productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .q-product-price {
+  .productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .q-product-price {
     margin-bottom: 11px;
   }
 }
 @media only screen and (max-width: 767px) {
-  #productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .q-product-price {
+  .productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .q-product-price {
     margin-bottom: 13px;
   }
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .q-product-price .old-price {
+.productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .q-product-price .old-price {
   color: #b8b8b8;
   text-decoration: line-through;
   margin-left: 8px;
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text p {
+.productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text p {
   border-bottom: 1px solid #ebebeb;
   color: #999999;
   font-size: 14px;
@@ -9119,18 +9198,18 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   padding-bottom: 21px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  #productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text p {
+  .productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text p {
     padding-bottom: 16px;
     margin-bottom: 22px;
   }
 }
 @media only screen and (max-width: 767px) {
-  #productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text p {
+  .productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text p {
     padding-bottom: 16px;
     margin-bottom: 22px;
   }
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .input-cart {
+.productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .input-cart {
   border-bottom: 1px solid #ebebeb;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9139,18 +9218,18 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   padding-bottom: 31px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  #productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .input-cart {
+  .productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .input-cart {
     padding-bottom: 23px;
     margin-bottom: 14px;
   }
 }
 @media only screen and (max-width: 767px) {
-  #productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .input-cart {
+  .productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .input-cart {
     padding-bottom: 23px;
     margin-bottom: 14px;
   }
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .input-cart input {
+.productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .input-cart input {
   border: 1px solid #ebebeb;
   color: #707070;
   font-size: 14px;
@@ -9160,12 +9239,16 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   text-align: center;
   width: 62px;
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .input-cart .default-btn {
+.productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .input-cart .default-btn {
   cursor: pointer;
   display: block;
   font-size: 13px;
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .share-product h4 {
+
+.productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .input-cart .disabled {
+  pointer-events: none;
+}
+.productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .share-product h4 {
   color: #23232c;
   font-size: 18px;
   font-weight: 500;
@@ -9174,21 +9257,21 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   text-transform: uppercase;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  #productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .share-product h4 {
+  .productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .share-product h4 {
     margin-bottom: 11px;
   }
 }
 @media only screen and (max-width: 767px) {
-  #productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .share-product h4 {
+  .productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .share-product h4 {
     margin-bottom: 11px;
   }
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .share-product .social-link {
+.productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .share-product .social-link {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .share-product .social-link a {
+.productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .share-product .social-link a {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
   border: 1px solid #ebebeb;
   border-radius: 0;
@@ -9200,26 +9283,26 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   text-align: center;
   margin-right: 5px;
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .share-product .social-link a:hover {
+.productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .share-product .social-link a:hover {
   color: #ffffff;
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .share-product .social-link .facebook:hover {
+.productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .share-product .social-link .facebook:hover {
   background: #2d4373 none repeat scroll 0 0;
   border-color: #2d4373;
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .share-product .social-link .twitter:hover {
+.productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .share-product .social-link .twitter:hover {
   background: #0087ba none repeat scroll 0 0;
   border-color: #0087ba;
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .share-product .social-link .pinterest:hover {
+.productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .share-product .social-link .pinterest:hover {
   background: #C51F26 none repeat scroll 0 0;
   border-color: #C51F26;
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .share-product .social-link .google:hover {
+.productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .share-product .social-link .google:hover {
   background: #DC5245 none repeat scroll 0 0;
   border-color: #DC5245;
 }
-#productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .share-product .social-link .linkedin:hover {
+.productModal .modal-dialog .modal-content .quick-view-container .column-right .quick-view-text .share-product .social-link .linkedin:hover {
   background: #005983 none repeat scroll 0 0;
   border-color: #005983;
 }
