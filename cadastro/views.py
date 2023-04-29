@@ -33,7 +33,7 @@ def livros(request):
     return render(request, 'livros.html', context)
 
 def autores(request):
-    autores = Livros.objects.order_by('autor').distinct().values_list('autor', flat=True)
+    autores = Autores.objects.all()
 
     context = {
         'autores': autores
@@ -41,8 +41,41 @@ def autores(request):
 
     return render(request, 'autores.html', context)
 
+def livros_por_autor(request, id):
+    autor = Autores.objects.get(id=id)
+    livros = Livros.objects.filter(autores=autor)
+
+    context = {
+        'autor': autor,
+        'livros': livros
+    }
+
+    return render(request, 'autor.html', context)
+
+def livros_por_editora(request, id):
+    editora = Editoras.objects.get(id=id)
+    livros = Livros.objects.filter(editora=editora)
+
+    context = {
+        'editora': editora,
+        'livros': livros
+    }
+
+    return render(request, 'editora.html', context)
+
+def livros_por_categoria(request, id):
+    categoria = Categorias.objects.get(id=id)
+    livros = Livros.objects.filter(categoria=categoria)
+
+    context = {
+        'categoria': categoria,
+        'livros': livros
+    }
+
+    return render(request, 'categoria.html', context)
+
 def editoras(request):
-    editoras = Livros.objects.order_by('editora').distinct().values_list('editora', flat=True)
+    editoras = Editoras.objects.all()
 
     context = {
         'editoras': editoras
@@ -87,8 +120,26 @@ def contato(request):
     }
     return render(request, 'contato.html', context)
 
+from django.db.models import Q
+
+from django.shortcuts import render
+from django.core.exceptions import ValidationError
+
 def busca(request):
-    return render(request, 'busca.html')
+    query = request.GET.get('busca')
+    livros = Livros.objects.filter(
+        Q(titulo__icontains=query) |
+        Q(categoria__nome__icontains=query) |
+        Q(editora__nome__icontains=query) |
+        Q(autores__nome__icontains=query)
+    ).distinct()
+
+    context = {
+        'livros': livros,
+        'busca': query,
+    }
+
+    return render(request, 'busca.html', context)
 
 def equipe(request):
     return render(request, 'equipe.html')

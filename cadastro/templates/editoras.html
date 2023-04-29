@@ -25,7 +25,7 @@
               </thead>
               <tbody>
                 {% for editora in editoras %}
-                    <tr><td>{{ editora }}</td></tr>
+                    <tr><td><a href="/editora/{{editora.id}}">{{ editora }}</a></td></tr>
                 {% endfor %}
               </tbody>
             </table>

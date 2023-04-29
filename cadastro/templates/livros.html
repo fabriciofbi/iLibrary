@@ -31,7 +31,11 @@
                 <tr>
                     <td>{{ livro.titulo }}</td>
                     <td>{{ livro.ano }}</td>
-                    <td>{{ livro.autor }}</td>
+                    <td>
+                      {% for autor in livro.autores.all %}
+                        {{ autor.nome }}{% if not forloop.last %}, {% endif %}
+                      {% endfor %}
+                    </td>
                     <td>{{ livro.editora }}</td>
                 </tr>
                 {% endfor %}

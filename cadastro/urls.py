@@ -1,5 +1,7 @@
 from django.urls import path, include
 from rest_framework import routers
+
+from . import views
 from .views import livros, autores, editoras, categorias, contato, favicon_view, busca, IndexListView, equipe, teste, AlunosViewSet, LivrosViewSet, EditorasViewSet, AutoresViewSet, CategoriasViewSet
 
 router = routers.DefaultRouter()
@@ -20,4 +22,7 @@ urlpatterns = [
     path('teste/', teste, name='teste'),
     path('favicon.ico', favicon_view, name='favicon'),
     path('api/', include(router.urls)),
+    path('autor/<int:id>/', views.livros_por_autor, name='livros_por_autor'),
+    path('editora/<int:id>/', views.livros_por_editora, name='livros_por_editora'),
+    path('categoria/<int:id>/', views.livros_por_categoria, name='livros_por_categoria'),
 ]

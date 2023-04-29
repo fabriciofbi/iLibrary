@@ -20,15 +20,13 @@
             <table id="tabela-exemplo" class="table table-striped text-center">
               <thead>
                 <tr class="text-center">
-                  <th>Id</th>
                   <th>Categoria</th>
                 </tr>
               </thead>
               <tbody>
                 {% for categoria in categorias %}
                 <tr>
-                    <td>{{ categoria.id }}</td>
-                    <td>{{ categoria.nome }}</td>
+                    <td><a href="/categoria/{{categoria.id}}">{{ categoria.nome }}</a></td>
                 </tr>
                 {% endfor %}
               </tbody>

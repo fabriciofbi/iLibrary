@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
-{% block 'titulo' %} Autores - iLibrary - Gestão de Bibliotecas {% endblock %}
+{% block 'titulo' %} Categoria - {{ categoria.nome }}- iLibrary - Gestão de Bibliotecas {% endblock %}
 
 {% block extra_head %}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
 {% endblock %}
 
-{% block 'conteudo' %}  
+{% block 'conteudo' %}
     <!-- Conteudo - Inicio -->
         <div class="breadcrumb-area bg-12 text-center">
             <div class="container">
-                <h2>Autores</h2>
+                <h2>Categoria: {{ categoria.nome }}</h2>
             </div>
         </div>
     <!-- Conteudo - Fim -->
@@ -20,12 +20,12 @@
             <table id="tabela-exemplo" class="table table-striped text-center">
               <thead>
                 <tr class="text-center">
-                  <th>Autores</th>
+                  <th>Livros</th>
                 </tr>
               </thead>
               <tbody>
-                {% for autor in autores %}
-                    <tr><td><a href="/autor/{{autor.id}}">{{ autor }}</a></td></tr>
+                {% for livro in livros %}
+                    <tr><td>{{ livro.titulo }}</td></tr>
                 {% endfor %}
               </tbody>
             </table>
