@@ -25,7 +25,7 @@
               </thead>
               <tbody>
                 {% for livro in livros %}
-                    <tr><td>{{ livro.titulo }}</td></tr>
+                    <tr><td><a href="/livro/{{ livro.id }}">{{ livro.titulo }}</a></td></tr>
                 {% endfor %}
               </tbody>
             </table>

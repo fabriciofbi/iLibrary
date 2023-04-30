@@ -21,11 +21,22 @@
               <thead>
                 <tr class="text-center">
                   <th>Livros</th>
+                  <th>Autores</th>
+                  <th>Editoras</th>
                 </tr>
               </thead>
               <tbody>
                 {% for livro in livros %}
-                    <tr><td>{{ livro.titulo }}</td></tr>
+                    <tr>
+                        <td><a href="/livro/{{ livro.id }}">{{ livro.titulo }}</a></td>
+                        <td>
+                            {% for autor in livro.autores.all %}
+                                <a href="/autor/{{ autor.id }}">{{ autor.nome }}</a>
+                                {% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td><a href="/editora/{{ livro.editora.id }}">{{ livro.editora.nome }}</a></td>
+                    </tr>
                 {% endfor %}
               </tbody>
             </table>

@@ -3454,7 +3454,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   line-height: 35px;
 }
 .single-product-item .product-text .product-rating > i.color {
-  color: #7ba212;
+  color: #ffc929;
 }
 .single-product-item .product-text > h5 {
   color: #202226;
@@ -9606,4 +9606,16 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   .login-register-area.pt-110 {
     padding-top: 60px;
   }
+}
+
+#cookie-msg {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: 0;
+  z-index: 9999;
+  background-color: #f8f9fa;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+
 }

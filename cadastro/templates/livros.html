@@ -29,14 +29,14 @@
               <tbody>
                 {% for livro in livros %}
                 <tr>
-                    <td>{{ livro.titulo }}</td>
+                    <td><a href="/livro/{{livro.id}}">{{ livro.titulo }}</a></td>
                     <td>{{ livro.ano }}</td>
                     <td>
                       {% for autor in livro.autores.all %}
-                        {{ autor.nome }}{% if not forloop.last %}, {% endif %}
+                        <a href="/autor/{{autor.id}}">{{ autor.nome }}</a>{% if not forloop.last %}, {% endif %}
                       {% endfor %}
                     </td>
-                    <td>{{ livro.editora }}</td>
+                    <td><a href="/editora/{{livro.editora.id}}">{{ livro.editora }}</a></td>
                 </tr>
                 {% endfor %}
               </tbody>

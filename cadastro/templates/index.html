@@ -2,15 +2,14 @@
 
 {% block 'titulo' %} iLibrary - Gestão de Bibliotecas {% endblock %}
 
-{% block 'conteudo' %}  
+{% block 'conteudo' %}
     <!-- Conteudo - Inicio -->
         <div class="breadcrumb-area text-center">
             <div class="container">
                 <h2>Livros em Destaque</h2>
             </div>
         </div>
-    <!-- Conteudo - Fim -->
-    <!-- Shop Area Start -->
+
         <div class="shop-area pt-30 pb-20 bg-gray mb-15 shop-full-width">
             <div class="container">
                 <div class="ht-product-tab">
@@ -72,14 +71,14 @@
                                     </div>
                                     <div class="product-text">
                                         <div class="product-rating">
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o color"></i>
-                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star color"></i>
+                                            <i class="fa fa-star color"></i>
+                                            <i class="fa fa-star color"></i>
+                                            <i class="fa fa-star color"></i>
+                                            <i class="fa fa-star color"></i>
                                         </div>
                                         <h5><a href="{{ livro.imagem.url }}" data-bs-toggle="modal"  data-bs-target="#productModal{{ livro.id }}">{{ livro.titulo }}</a></h5>
-                                        <h6><a href="{{ livro.imagem.url }}" data-bs-toggle="modal"  data-bs-target="#productModal{{ livro.id }}">{{ livro.autor }}</a></h6>
+                                        <h6><a href="{{ livro.imagem.url }}" data-bs-toggle="modal"  data-bs-target="#productModal{{ livro.id }}">{{ livro.autores.all|join:", " }}</a></h6>
                                         {% if livro.qtd_disponivel > 0 %}
                                             <h6 class="text-success">Disponível: {{ livro.qtd_disponivel }}</h6>
                                         {% else %}
@@ -103,7 +102,8 @@
                                                 </div>
                                                 <div class="column-right text-start">
                                                     <div class="quick-view-text">
-                                                        <h2>{{ livro.titulo }}</h2>
+                                                        <h3>{{ livro.titulo }}</h3>
+                                                        <h4>{{ livro.autores.all|join:", " }}</h4>
                                                         {% if livro.qtd_disponivel > 0 %}
                                                             <h3 class="q-product-price text-success">Disponivel: {{ livro.qtd_disponivel }}</h3>
                                                         {% else %}
@@ -156,18 +156,11 @@
                         {% for livro in page_obj %}
                             <div class="single-product-item">
                                 <div class="product-image">
-                                    <a href="#productModal{{ livro.id }}">
-                                        <img src="{{ livro.imagem.url }}" alt="">
-                                    </a>
-                                    <div class="product-hover">
-                                        <ul class="hover-icon-list">
-                                            <li><a href="{{ livro.imagem.url }}" data-bs-toggle="modal" data-bs-target="#productModal{{ livro.id }}"><i class="icon icon-Search"></i></a></li>
-                                        </ul>
-                                    </div>
+                                    <img src="{{ livro.imagem.url }}" alt="">
                                 </div>
                                 <div class="product-text">
-                                    <h5><a href="{{ livro.imagem.url }}" data-bs-toggle="modal" data-bs-target="#productModal{{ livro.id }}">{{ livro.titulo }}</a></h5>
-                                    <h6><a href="{{ livro.imagem.url }}" data-bs-toggle="modal" data-bs-target="#productModal{{ livro.id }}">{{ livro.autor }}</a></h6>
+                                    <h3>{{ livro.titulo }}</h3>
+                                    <h4>{{ livro.autores.all|join:", " }}</h4>
                                     <div class="product-rating">
                                         <i class="fa fa-star-o color"></i>
                                         <i class="fa fa-star-o color"></i>
@@ -222,90 +215,31 @@
         </div>
         <!-- Shop Area End -->
 
-
-        <!-- Testimonial Area Start -->
-        <div class="testimonial-area pt-110 pb-95">
-            <div class="container">
-                <div class="testimonial-slider-wrapper">
-                    <div class="text-carousel text-center">
-                        <div class="slider-text">
-                            <span class="testi-quote">
-                                <img src="imagens/icones/quote.webp" alt="">
-                            </span>
-                            <p>Estudante de Bacharel em TI pela Univesp<br>
-                            Trabalha há 23 anos na área de TI e a 15 como programador em linguagens antigas como ASP.<br>
-                                Estudando C# como linguagem para o futuro.</p>
-                        </div>
-                        <div class="slider-text">
-                            <span class="testi-quote">
-                                <img src="imagens/icones/quote.webp" alt="">
-                            </span>
-                            <p>Estudante de Bacharel em TI pela Univesp<br>
-                            Trabalha há 23 anos na área de TI e a 15 como programador em linguagens antigas como ASP.<br>
-                                Estudando C# como linguagem para o futuro.</p>
-                        </div>
-                        <div class="slider-text">
-                            <span class="testi-quote">
-                                <img src="imagens/icones/quote.webp" alt="">
-                            </span>
-                            <p>Estudante de Bacharel em TI pela Univesp<br>
-                            Trabalha há 23 anos na área de TI e a 15 como programador em linguagens antigas como ASP.<br>
-                                Estudando C# como linguagem para o futuro.</p>
-                        </div>
-                        <div class="slider-text">
-                            <span class="testi-quote">
-                                <img src="imagens/icones/quote.webp" alt="">
-                            </span>
-                            <p>Estudante de Bacharel em TI pela Univesp<br>
-                            Trabalha há 23 anos na área de TI e a 15 como programador em linguagens antigas como ASP.<br>
-                                Estudando C# como linguagem para o futuro.</p>
-                        </div>
-                        <div class="slider-text">
-                            <span class="testi-quote">
-                                <img src="imagens/icones/quote.webp" alt="">
-                            </span>
-                            <p>Estudante de Bacharel em TI pela Univesp<br>
-                            Trabalha há 23 anos na área de TI e a 15 como programador em linguagens antigas como ASP.<br>
-                                Estudando C# como linguagem para o futuro.</p>
-                        </div>
-                        <div class="slider-text">
-                            <span class="testi-quote">
-                                <img src="imagens/icones/quote.webp" alt="">
-                            </span>
-                            <p>Estudante de Bacharel em TI pela Univesp<br>
-                            Trabalha há 23 anos na área de TI e a 15 como programador em linguagens antigas como ASP.<br>
-                                Estudando C# como linguagem para o futuro.</p>
-                        </div>
-                    </div>
-                    <div class="image-carousel">
-                        <div class="testi-img">
-                            <img src="imagens/alunos/FabricioGomes.jpg" alt="">
-                            <h4>Fabricio Gomes 2101090</h4>
-                        </div>
-                        <div class="testi-img">
-                            <img src="imagens/alunos/FabricioGomes.jpg" alt="">
-                            <h4>Fabricio Gomes 2101090</h4>
-                        </div>
-                        <div class="testi-img">
-                            <img src="imagens/alunos/FabricioGomes.jpg" alt="">
-                            <h4>Fabricio Gomes 2101090</h4>
-                        </div>
-                        <div class="testi-img">
-                            <img src="imagens/alunos/FabricioGomes.jpg" alt="">
-                            <h4>Fabricio Gomes 2101090</h4>
-                        </div>
-                        <div class="testi-img">
-                            <img src="imagens/alunos/FabricioGomes.jpg" alt="">
-                            <h4>Fabricio Gomes 2101090</h4>
-                        </div>
-                        <div class="testi-img">
-                            <img src="imagens/alunos/FabricioGomes.jpg" alt="">
-                            <h4>Fabricio Gomes 2101090</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div id="cookie-msg" class="cookie-message alert alert-dismissible fade show text-center" role="alert">
+          <p>Este site usa cookies para melhorar a sua experiência. Clique em "Aceitar" para continuar navegando.</p>
+          <button id="accept-cookie" type="button" class="btn btn-warning">Aceitar</button>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
         </div>
-        <!-- Testimonial Area End -->
 
+{% endblock %}
+
+{% block js_footer %}
+        <script>
+          $(document).ready(function() {
+            if (localStorage.getItem('cookie_accepted') !== 'true') {
+              $('#cookie-msg').show();
+            }
+
+            $('#accept-cookie').click(function() {
+              localStorage.setItem('cookie_accepted', 'true');
+              $('#cookie-msg').hide();
+            });
+          });
+
+          window.addEventListener('load', function() {
+            if (localStorage.getItem('cookie_accepted') === 'true') {
+              $('#cookie-msg').hide();
+            }
+          });
+        </script>
 {% endblock %}

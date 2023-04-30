@@ -6,7 +6,7 @@ from .models import Livros, Categorias, Alunos, Autores, Editoras
 from .forms import ContatoForm
 from django.contrib import messages
 from django.shortcuts import render, redirect
-
+from django.db.models import Q
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from .serializers import AlunosSerializer, LivrosSerializer, EditorasSerializer, AutoresSerializer, CategoriasSerializer
@@ -33,7 +33,7 @@ def livros(request):
     return render(request, 'livros.html', context)
 
 def autores(request):
-    autores = Autores.objects.all()
+    autores = Autores.objects.all().order_by('nome')
 
     context = {
         'autores': autores
@@ -62,6 +62,15 @@ def livros_por_editora(request, id):
     }
 
     return render(request, 'editora.html', context)
+
+def livro(request, id):
+    livro = Livros.objects.get(id=id)
+
+    context = {
+        'livro': livro
+    }
+
+    return render(request, 'livro.html', context)
 
 def livros_por_categoria(request, id):
     categoria = Categorias.objects.get(id=id)
@@ -120,11 +129,6 @@ def contato(request):
     }
     return render(request, 'contato.html', context)
 
-from django.db.models import Q
-
-from django.shortcuts import render
-from django.core.exceptions import ValidationError
-
 def busca(request):
     query = request.GET.get('busca')
     livros = Livros.objects.filter(
@@ -174,4 +178,3 @@ class EditorasViewSet(viewsets.ModelViewSet):
 class AutoresViewSet(viewsets.ModelViewSet):
     queryset = Autores.objects.all()
     serializer_class = AutoresSerializer
-

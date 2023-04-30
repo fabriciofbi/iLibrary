@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block 'titulo' %} {{ livro.titulo }} - iLibrary - Gestão de Bibliotecas {% endblock %}
+
+{% block 'conteudo' %}
+    <!-- Conteudo - Inicio -->
+        <div class="breadcrumb-area text-center">
+        </div>
+    <!-- Conteudo - Fim -->
+    <!-- Shop Area Start -->
+        <div class="shop-area pt-20 pb-10 bg-gray mb-2 shop-full-width">
+            <div class="container">
+                <div class="ht-product-shop tab-content text-center">
+                    <div class="tab-pane fade text-start active show" id="list" role="tabpanel">
+                            <div class="single-product-item" style="margin-top: 10px;">
+                                <div class="product-image">
+                                    <img src="{{ livro.imagem.url }}" alt="">
+                                </div>
+                                <div class="product-text">
+                                    <h3>{{ livro.titulo }}</h3>
+                                    <h4>{{ livro.autores.all|join:", " }}</h4>
+                                    <div class="product-rating">
+                                        <i class="fa fa-star-o color"></i>
+                                        <i class="fa fa-star-o color"></i>
+                                        <i class="fa fa-star-o color"></i>
+                                        <i class="fa fa-star-o color"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                    <div class="pro-price">
+                                        {% if livro.qtd_disponivel > 0 %}
+                                            <span class="new-price text-success">Disponível: {{ livro.qtd_disponivel }}</span>
+                                        {% else %}
+                                            <span class="new-price text-danger">Disponível: {{ livro.qtd_disponivel }}</span>
+                                        {% endif %}
+                                    </div>
+                                    <p>{{ livro.descricao }}</p>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Shop Area End -->
+
+{% endblock %}

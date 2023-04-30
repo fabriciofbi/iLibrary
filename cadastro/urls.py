@@ -25,4 +25,5 @@ urlpatterns = [
     path('autor/<int:id>/', views.livros_por_autor, name='livros_por_autor'),
     path('editora/<int:id>/', views.livros_por_editora, name='livros_por_editora'),
     path('categoria/<int:id>/', views.livros_por_categoria, name='livros_por_categoria'),
+    path('livro/<int:id>/', views.livro, name='livro'),
 ]

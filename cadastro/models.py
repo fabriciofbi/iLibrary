@@ -7,7 +7,6 @@ from django.http import HttpResponse
 from validate_email import validate_email
 from django.core.validators import MinValueValidator
 
-
 class Alunos(models.Model):
     nome = models.CharField(max_length=100, blank=True)
     ra = models.IntegerField(unique=True)
@@ -63,6 +62,12 @@ class Categorias(models.Model):
     def __str__(self):
         return self.nome
 
+    def delete(self, *args, **kwargs):
+        if Livros.objects.filter(categoria=self).exists():
+            raise ValidationError('Existem livros associados a esta categoria.')
+        super().delete(*args, **kwargs)
+
+
 class Livros(models.Model):
     isbn = models.CharField(max_length=16, unique=True)
     titulo = models.CharField(max_length=100)
@@ -76,6 +81,7 @@ class Livros(models.Model):
     destaque = models.BooleanField(default=False)
     data_cadastro = models.DateTimeField(auto_now_add=True)
     descricao = models.TextField()
+
 
     class Meta:
         verbose_name = 'Livro'

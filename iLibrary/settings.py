@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'locacao',
     'devolucao',
     'rest_framework',
-    'django_select2',
 ]
 
 MIDDLEWARE = [

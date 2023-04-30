@@ -24,6 +24,7 @@ admin.site.register(Editoras, EditorasAdmin)
 class AutoresAdmin(admin.ModelAdmin):
     fields = ["nome"]
     search_fields = ('id', 'nome')
+    ordering = ['nome']
 
 admin.site.register(Autores, AutoresAdmin)
 
